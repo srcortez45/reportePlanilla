@@ -11,6 +11,7 @@ Public Class form_planillaemp
         conexion.traerRegistro(pos.ToString)
         calcularPago()
         enviarDatoPago()
+        NormalizarSalida()
     End Sub
 
     Private Sub btn_aceptar_Click(sender As Object, e As EventArgs) Handles btn_aceptar.Click
@@ -62,6 +63,24 @@ Public Class form_planillaemp
                                lb_totalbilletes.Text,
                                lb_totalmonedas.Text,
                                lb_totaldesgloce.Text)
+    End Sub
+
+    Private Sub NormalizarSalida()
+        lb_salario_mensual.Text += " $"
+        lb_salario_quincenal.Text += " $"
+
+        lb_porc_renta.Text += " %"
+
+        lb_seg_social.Text += " $"
+        lb_seg_edu.Text += " $"
+
+        lb_porc_otros_desc.Text = "(" + lb_porc_otros_desc.Text + "%):"
+
+        lb_porc_impRenta.Text = "(" & Val(lb_porc_impRenta.Text * 100) & "%):"
+        lb_monto_impRenta.Text += " $"
+
+        lb_total_desc.Text += " $"
+        lb_salario_neto.Text += " $"
     End Sub
     Private Sub enviarDatoPago()
         conexion.enviarDatosPago(lb_cedula_emp.Text,

@@ -151,6 +151,19 @@ Public Class conexion
 
     'MODUULO PARA OBTENER EL TOTAL DE REGISTROS
 
+    Function totalRegistros() As String
+        Dim total As String
+        sqlconexion.Open()
+        sqlcomandos.Connection = sqlconexion
+        sqlcomandos.CommandText = "Select Count(*) from tabdetapla"
+        Try
+            total = Convert.ToString(sqlcomandos.ExecuteScalar())
+        Catch ex As Exception
+            MsgBox(ex)
+        End Try
+        sqlconexion.Close()
+        Return total
 
+    End Function
 
 End Class
