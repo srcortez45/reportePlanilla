@@ -139,6 +139,8 @@ Public Class conexion
         sqlcomandos.Parameters.AddWithValue("@monto_otros_desc", monto_otros_desc)
         sqlcomandos.Parameters.AddWithValue("@total_desc", total_desc)
         sqlcomandos.Parameters.AddWithValue("@salario_neto", salario_neto)
+
+
         sqlcomandos.ExecuteNonQuery()
         sqlcomandos.Parameters.Clear()
         sqlconexion.Close()
@@ -148,19 +150,7 @@ Public Class conexion
     End Sub
 
     'MODUULO PARA OBTENER EL TOTAL DE REGISTROS
-    Function totalRegistros() As String
-        Dim total As String
-        sqlconexion.Open()
-        sqlcomandos.Connection = sqlconexion
-        sqlcomandos.CommandText = "Select Count(*) from tabdetapla"
-        Try
-            total = Convert.ToString(sqlcomandos.ExecuteScalar())
-        Catch ex As Exception
-            MsgBox(ex)
-        End Try
-        sqlconexion.Close()
-        Return total
 
-    End Function
+
 
 End Class
