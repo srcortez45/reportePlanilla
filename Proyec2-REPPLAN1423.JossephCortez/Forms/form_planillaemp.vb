@@ -34,13 +34,18 @@ Public Class form_planillaemp
     Private Sub calcularPago()
 
         lb_salario_quincenal.Text = calculos.calcularSalarioQuincenal(lb_salario_mensual.Text)
+
         lb_porc_impRenta.Text = calculos.calcularPorcImpRenta(lb_sexo.Text)
         lb_porc_renta.Text = Val((lb_porc_impRenta.Text) * 100)
         lb_monto_impRenta.Text = calculos.calcularMontoImpRenta(lb_salario_quincenal.Text, lb_porc_impRenta.Text)
+
+
         lb_seg_social.Text = calculos.calcularMontoSegSocial(lb_salario_quincenal.Text)
         lb_seg_edu.Text = calculos.calcularMontoSegEducativo(lb_salario_quincenal.Text)
+
         lb_monto_otros_desc.Text = calculos.calcularMonto_OtrosDesc(lb_salario_quincenal.Text, lb_porc_otros_desc.Text)
         lb_total_desc.Text = calculos.calcularTotalDesc(lb_monto_impRenta.Text, lb_seg_social.Text, lb_seg_edu.Text, lb_monto_otros_desc.Text)
+
         lb_salario_neto.Text = calculos.calcularSalarioNeto(lb_salario_quincenal.Text, lb_total_desc.Text)
 
         calculos.desgloseDinero(lb_salario_mensual.Text,
@@ -60,9 +65,6 @@ Public Class form_planillaemp
     End Sub
     Private Sub enviarDatoPago()
         conexion.enviarDatosPago(lb_cedula_emp.Text,
-                                 lb_empleado.Text,
-                                 lb_sexo.Text,
-                                 lb_salario_mensual.Text,
                                  lb_salario_quincenal.Text,
                                  lb_seg_social.Text,
                                  lb_seg_edu.Text,

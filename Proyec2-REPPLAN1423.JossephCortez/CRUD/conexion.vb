@@ -72,11 +72,11 @@ Public Class conexion
 
 
     'MODULO PARA ELIMINAR REGISTRO
-    Sub eliminarRegistro(ByVal empleado As String)
+    Sub eliminarRegistro(ByVal cedula As String)
         sqlconexion.Open()
         sqlcomandos.Connection = sqlconexion
-        sqlcomandos.CommandText = "DELETE FROM `tabdetapla` WHERE `empleados`=  ?empleados "
-        sqlcomandos.Parameters.AddWithValue("?empleados", empleado)
+        sqlcomandos.CommandText = "DELETE FROM `tabdetapla` WHERE `cedula`=  ?cedula "
+        sqlcomandos.Parameters.AddWithValue("?cedula", cedula)
         sqlcomandos.ExecuteNonQuery()
         sqlcomandos.Parameters.Clear()
         sqlconexion.Close()
@@ -88,7 +88,7 @@ Public Class conexion
     Sub actualizarRegistro(ByVal cedula As String, ByVal empleado As String, ByVal sexo As String, ByVal salario_mensual As String, ByVal otros_desc As String)
         sqlconexion.Open()
         sqlcomandos.Connection = sqlconexion
-        sqlcomandos.CommandText = "UPDATE `tabdetapla` SET cedula = @cedula ,empleados = @empleados, sexo = @sexo, salario_mensual = @salario_mensual, otros_desc = @otros_desc WHERE empleados = @empleados"
+        sqlcomandos.CommandText = "UPDATE `tabdetapla` SET cedula = @cedula ,empleados = @empleados, sexo = @sexo, salario_mensual = @salario_mensual, otros_desc = @otros_desc WHERE cedula = @cedula"
         sqlcomandos.Parameters.AddWithValue("@cedula", cedula)
         sqlcomandos.Parameters.AddWithValue("@empleados", empleado)
         sqlcomandos.Parameters.AddWithValue("@sexo", sexo)
@@ -116,7 +116,7 @@ Public Class conexion
                 form_planillaemp.lb_firma_emp.Text = lector.GetString(1)
                 form_planillaemp.lb_sexo.Text = lector.GetString(2)
                 form_planillaemp.lb_salario_mensual.Text = lector.GetDecimal(3)
-                form_planillaemp.lb_porc_otros_desc.Text = lector.GetDecimal(8)
+                form_planillaemp.lb_porc_otros_desc.Text = lector.GetDecimal(4)
             End While
         Catch ex As Exception
             Console.WriteLine(ex)
@@ -127,19 +127,16 @@ Public Class conexion
     End Sub
 
     'MODULO PARA ENVIAR LOS DATOS DE PAGO DEL EMPLEADO
-    Sub enviarDatosPago(ByVal cedula As String, ByVal empleado As String, ByVal sexo As String, ByVal salario_mensual As String, ByVal salario_quincenal As String, ByVal seg_social As String, ByVal seg_edu As String, ByVal imp_renta As String, ByVal otros_desc As String, ByVal total_desc As String, ByVal salario_neto As String)
+    Sub enviarDatosPago(ByVal cedula As String, ByVal salario_quincenal As String, ByVal seg_social As String, ByVal seg_edu As String, ByVal imp_renta As String, ByVal monto_otros_desc As String, ByVal total_desc As String, ByVal salario_neto As String)
         sqlconexion.Open()
         sqlcomandos.Connection = sqlconexion
-        sqlcomandos.CommandText = "UPDATE `tabdetapla` SET cedula = @cedula ,empleados = @empleados, sexo = @sexo, salario_mensual = @salario_mensual, salario_quincenal = @salario_quincenal, seguro_social = @seguro_social,seguro_educativo = @seguro_educativo, imp_renta = @imp_renta, otros_desc = @otros_desc ,total_desc = @total_desc ,salario_neto = @salario_neto WHERE cedula = @cedula"
+        sqlcomandos.CommandText = "UPDATE `tabpagoplan` SET salario_quincenal = @salario_quincenal, seguro_social = @seguro_social,seguro_educativo = @seguro_educativo, imp_renta = @imp_renta, monto_otros_desc = @monto_otros_desc ,total_desc = @total_desc ,salario_neto = @salario_neto WHERE cedula = @cedula"
         sqlcomandos.Parameters.AddWithValue("@cedula", cedula)
-        sqlcomandos.Parameters.AddWithValue("@empleados", empleado)
-        sqlcomandos.Parameters.AddWithValue("@sexo", sexo)
-        sqlcomandos.Parameters.AddWithValue("@salario_mensual", salario_mensual)
         sqlcomandos.Parameters.AddWithValue("@salario_quincenal", salario_quincenal)
         sqlcomandos.Parameters.AddWithValue("@seguro_social", seg_social)
         sqlcomandos.Parameters.AddWithValue("@seguro_educativo", seg_edu)
         sqlcomandos.Parameters.AddWithValue("@imp_renta", imp_renta)
-        sqlcomandos.Parameters.AddWithValue("@otros_desc", otros_desc)
+        sqlcomandos.Parameters.AddWithValue("@monto_otros_desc", monto_otros_desc)
         sqlcomandos.Parameters.AddWithValue("@total_desc", total_desc)
         sqlcomandos.Parameters.AddWithValue("@salario_neto", salario_neto)
         sqlcomandos.ExecuteNonQuery()

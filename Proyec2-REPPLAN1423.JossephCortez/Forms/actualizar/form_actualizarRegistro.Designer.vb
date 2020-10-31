@@ -24,6 +24,7 @@ Partial Class form_actualizarRegistro
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(form_actualizarRegistro))
         Me.gp_formulario = New System.Windows.Forms.GroupBox()
+        Me.lb_msgInfo = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.txt_cedula = New System.Windows.Forms.TextBox()
         Me.chbx_opcion2 = New System.Windows.Forms.CheckBox()
@@ -37,7 +38,6 @@ Partial Class form_actualizarRegistro
         Me.Label3 = New System.Windows.Forms.Label()
         Me.btn_regresar = New System.Windows.Forms.Button()
         Me.btn_actualizar = New System.Windows.Forms.Button()
-        Me.lb_msgInfo = New System.Windows.Forms.Label()
         Me.gp_formulario.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -63,6 +63,17 @@ Partial Class form_actualizarRegistro
         Me.gp_formulario.TabIndex = 5
         Me.gp_formulario.TabStop = False
         Me.gp_formulario.Text = "Formulario de registro de empleado"
+        '
+        'lb_msgInfo
+        '
+        Me.lb_msgInfo.AutoSize = True
+        Me.lb_msgInfo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lb_msgInfo.ForeColor = System.Drawing.Color.Navy
+        Me.lb_msgInfo.Location = New System.Drawing.Point(64, 470)
+        Me.lb_msgInfo.Name = "lb_msgInfo"
+        Me.lb_msgInfo.Size = New System.Drawing.Size(67, 20)
+        Me.lb_msgInfo.TabIndex = 14
+        Me.lb_msgInfo.Text = "MsgInfo"
         '
         'Label5
         '
@@ -191,17 +202,6 @@ Partial Class form_actualizarRegistro
         Me.btn_actualizar.TabIndex = 11
         Me.btn_actualizar.Text = "Actualizar"
         Me.btn_actualizar.UseVisualStyleBackColor = True
-        '
-        'lb_msgInfo
-        '
-        Me.lb_msgInfo.AutoSize = True
-        Me.lb_msgInfo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lb_msgInfo.ForeColor = System.Drawing.Color.Navy
-        Me.lb_msgInfo.Location = New System.Drawing.Point(64, 470)
-        Me.lb_msgInfo.Name = "lb_msgInfo"
-        Me.lb_msgInfo.Size = New System.Drawing.Size(67, 20)
-        Me.lb_msgInfo.TabIndex = 14
-        Me.lb_msgInfo.Text = "MsgInfo"
         '
         'form_actualizarRegistro
         '

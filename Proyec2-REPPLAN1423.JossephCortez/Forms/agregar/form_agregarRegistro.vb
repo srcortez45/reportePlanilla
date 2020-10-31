@@ -33,7 +33,7 @@
 
         'SI LA INFO ES VALIDA AGREGA EL REGISTRO
         If (condicion) Then
-            Dim resp As Integer = MsgBox("¿Esta seguro que desea agregar el empleado" & vbCrLf & txt_empleado.Text & "con cedula: " & txt_cedula.Text & "?", MsgBoxStyle.YesNo)
+            Dim resp As Integer = MsgBox("¿Esta seguro que desea agregar el empleado" & vbCrLf & txt_empleado.Text & " con cedula: " & txt_cedula.Text & "?", MsgBoxStyle.YesNo)
             If (resp = MsgBoxResult.Yes) Then
                 conexion.agregarRegistro(txt_cedula.Text,
                                      txt_empleado.Text,

@@ -55,7 +55,7 @@
         empleado = dg_empleados.CurrentRow.Cells(1).Value.ToString
         sexo = dg_empleados.CurrentRow.Cells(2).Value.ToString
         salario_mensual = dg_empleados.CurrentRow.Cells(3).Value.ToString
-        otros_desc = dg_empleados.CurrentRow.Cells(8).Value.ToString
+        otros_desc = dg_empleados.CurrentRow.Cells(4).Value.ToString
     End Sub
 
 

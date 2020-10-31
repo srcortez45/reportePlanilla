@@ -10,12 +10,15 @@
         If (sexo.Contains("M")) Then
             chbx_opcion2.Checked = False
             chbx_opcion1.Checked = True
+            Me.sexo = "M"
         Else
             chbx_opcion1.Checked = False
             chbx_opcion2.Checked = True
+            Me.sexo = "F"
         End If
         txt_salario_mensual.Text = salario_mensual
         txt_otros_desc.Text = otros_desc
+
     End Sub
 
 
@@ -50,7 +53,7 @@
 
         'SI LA INFO ES VALIDA AGREGA EL REGISTRO
         If (condicion) Then
-            Dim resp As Integer = MsgBox("¿Esta seguro que desea actualizar el empleado" & vbCrLf & txt_empleado.Text & "con cedula: " & txt_cedula.Text & "?", MsgBoxStyle.YesNo)
+            Dim resp As Integer = MsgBox("¿Esta seguro que desea actualizar el empleado" & vbCrLf & txt_empleado.Text & " con cedula: " & txt_cedula.Text & "?", MsgBoxStyle.YesNo)
             If (resp = MsgBoxResult.Yes) Then
                 conexion.actualizarRegistro(txt_cedula.Text,
                                         txt_empleado.Text,
