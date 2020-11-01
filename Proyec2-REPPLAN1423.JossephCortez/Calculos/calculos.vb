@@ -1,4 +1,5 @@
-﻿Public Class Calculos
+﻿
+Public Class Calculos
 
 
     Public Shared ReadOnly Property Instancia As Calculos
@@ -8,13 +9,22 @@
         End Get
     End Property
 
-    Function Redondear(valor As String) As String
-        Dim temp As Double = Convert.ToDouble(valor)
-        Return Math.Round(temp, 2, MidpointRounding.ToEven)
+    Public Function Redondear(dNumero As Double, iDecimales As Integer) As Double
+        Dim lMultiplicador As Long
+        Dim dRetorno As Double
+
+        If iDecimales > 9 Then iDecimales = 9
+        lMultiplicador = 10 ^ iDecimales
+        dRetorno = CDbl(CLng(dNumero * lMultiplicador)) / lMultiplicador
+
+        Redondear = dRetorno
     End Function
 
+
+
     Function CalcularSalarioQuincenal(ByVal salario_mensual As String) As String
-        Return Redondear(salario_mensual / 2)
+
+        Return Redondear(salario_mensual / 2, 2)
     End Function
 
 
@@ -27,52 +37,54 @@
     End Function
 
     Function CalcularMontoImpRenta(ByVal salario_quincenal As String, ByVal PorcImpRenta As String) As String
-        Return Redondear(salario_quincenal * PorcImpRenta)
+        Return Redondear(salario_quincenal * PorcImpRenta, 2)
     End Function
 
 
     Function CalcularMontoSegSocial(ByVal salario_quincenal As String) As String
-        Return Redondear(salario_quincenal * 0.0925)
+        Return Redondear(salario_quincenal * 0.0925, 2)
     End Function
 
 
 
     Function CalcularMontoSegEducativo(ByVal salario_quincenal As String) As String
-        Return Redondear(salario_quincenal * 0.0125)
+        Return Redondear(salario_quincenal * 0.0125, 2)
     End Function
 
 
 
     Function CalcularMonto_OtrosDesc(ByVal salario_quincenal As String, ByVal otrosDesc As String) As String
-        Return Redondear(salario_quincenal * (otrosDesc / 100))
+        Return Redondear(salario_quincenal * (otrosDesc / 100), 2)
     End Function
 
 
 
     Function CalcularTotalDesc(ByVal ImpRenta As String, ByVal segSocial As String, ByVal segEduca As String, OtrosDesc As String) As String
-        Return Redondear(Val(ImpRenta) + Val(segSocial) + Val(segEduca) + Val((OtrosDesc / 100)))
+        Return Redondear(Val(ImpRenta) + Val(segSocial) + Val(segEduca) + Val((OtrosDesc / 100)), 2)
     End Function
 
 
     Public Function CalcularSalarioNeto(ByVal salario_quincenal As String, ByVal totalDesc As String)
-        Return Redondear(salario_quincenal - totalDesc)
+        Return Redondear(salario_quincenal - totalDesc, 2)
     End Function
 
-    Private Function RoundUp(value As Double, decimals As Integer) As Double
+    Public Sub MayorEmp(ByVal name As String, ByVal sal As String, ByRef sal_max As String, ByRef name_max As String)
+        If sal > sal_max Then
+            sal_max = sal
+            name_max = name
+        End If
+    End Sub
 
-        Return Math.Ceiling(value * (10 ^ decimals)) / (10 ^ decimals)
-
-    End Function
-    Public Function Redondear2_0(dNumero As Double, iDecimales As Integer) As Double
-        Dim lMultiplicador As Long
-        Dim dRetorno As Double
-
-        If iDecimales > 9 Then iDecimales = 9
-        lMultiplicador = 10 ^ iDecimales
-        dRetorno = CDbl(CLng(dNumero * lMultiplicador)) / lMultiplicador
-
-        Redondear2_0 = dRetorno
-    End Function
+    Public Sub MenorEmp(ByVal name As String, ByVal sal As String, ByRef sal_min As String, ByRef name_min As String)
+        If sal_min = 0 Then
+            sal_min = sal
+            name_min = name
+        End If
+        If sal < sal_min Then
+            sal_min = sal
+            name_min = name
+        End If
+    End Sub
 
 
     Public Sub DesgloseDinero(ByVal monto As Double,
@@ -99,7 +111,7 @@
             If monto >= monedas(cont) Then
                 cantidadMonedas(cont) = Math.Floor(monto / monedas(cont))
                 monto -= (cantidadMonedas(cont) * monedas(cont))
-                monto = Redondear2_0(monto, 2)
+                monto = Redondear(monto, 2)
 
 
             End If
@@ -113,7 +125,7 @@
         txt_billetes1 = cantidadMonedas(4)
 
 
-        txt_totalBilletes = (monedas(0) * cantidadMonedas(0)) + (monedas(1) * cantidadMonedas(1)) + (monedas(2) * cantidadMonedas(2)) + (monedas(3) * cantidadMonedas(3)) + (monedas(4) * cantidadMonedas(4))
+        txt_totalBilletes = Redondear((monedas(0) * cantidadMonedas(0)) + (monedas(1) * cantidadMonedas(1)) + (monedas(2) * cantidadMonedas(2)) + (monedas(3) * cantidadMonedas(3)) + (monedas(4) * cantidadMonedas(4)), 2)
 
 
         txt_monedas0_50 = cantidadMonedas(5)
@@ -124,7 +136,7 @@
 
 
 
-        txt_totalMonedas = (monedas(5) * cantidadMonedas(5)) + (monedas(6) * cantidadMonedas(6)) + (monedas(7) * cantidadMonedas(7)) + (monedas(8) * cantidadMonedas(8)) + (monedas(9) * cantidadMonedas(9))
+        txt_totalMonedas = Redondear((monedas(5) * cantidadMonedas(5)) + (monedas(6) * cantidadMonedas(6)) + (monedas(7) * cantidadMonedas(7)) + (monedas(8) * cantidadMonedas(8)) + (monedas(9) * cantidadMonedas(9)), 2)
 
 
         txt_totalDesgloce = Val(txt_totalBilletes) + Val(txt_totalMonedas)
