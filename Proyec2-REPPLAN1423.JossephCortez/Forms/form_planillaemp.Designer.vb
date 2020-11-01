@@ -105,6 +105,7 @@ Partial Class form_planillaemp
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("MS Reference Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.Red
         Me.Label1.Location = New System.Drawing.Point(-3, 18)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(463, 24)
@@ -115,6 +116,7 @@ Partial Class form_planillaemp
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("MS Reference Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.Color.Red
         Me.Label2.Location = New System.Drawing.Point(115, 54)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(233, 24)
@@ -125,6 +127,7 @@ Partial Class form_planillaemp
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("MS Reference Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.Red
         Me.Label3.Location = New System.Drawing.Point(188, 78)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(95, 24)
@@ -154,6 +157,7 @@ Partial Class form_planillaemp
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("MS Reference Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.ForeColor = System.Drawing.Color.Red
         Me.Label6.Location = New System.Drawing.Point(96, 102)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(280, 20)
@@ -300,7 +304,7 @@ Partial Class form_planillaemp
         'lb_salario_neto
         '
         Me.lb_salario_neto.AutoSize = True
-        Me.lb_salario_neto.Location = New System.Drawing.Point(716, 70)
+        Me.lb_salario_neto.Location = New System.Drawing.Point(728, 70)
         Me.lb_salario_neto.Name = "lb_salario_neto"
         Me.lb_salario_neto.Size = New System.Drawing.Size(95, 13)
         Me.lb_salario_neto.TabIndex = 24
@@ -368,6 +372,7 @@ Partial Class form_planillaemp
         '
         Me.Label31.AutoSize = True
         Me.Label31.Font = New System.Drawing.Font("MS Reference Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label31.ForeColor = System.Drawing.Color.Red
         Me.Label31.Location = New System.Drawing.Point(108, 136)
         Me.Label31.Name = "Label31"
         Me.Label31.Size = New System.Drawing.Size(255, 20)
@@ -473,24 +478,29 @@ Partial Class form_planillaemp
         Me.GroupBox2.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox2.Location = New System.Drawing.Point(45, 403)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(900, 203)
+        Me.GroupBox2.Size = New System.Drawing.Size(900, 217)
         Me.GroupBox2.TabIndex = 32
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Desglose de Billetes y Monedas:"
         '
         'Label33
         '
+        Me.Label33.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.Label33.AutoSize = True
-        Me.Label33.Location = New System.Drawing.Point(6, 175)
+        Me.Label33.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Label33.Font = New System.Drawing.Font("Tahoma", 14.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label33.ForeColor = System.Drawing.Color.Red
+        Me.Label33.Location = New System.Drawing.Point(73, 178)
         Me.Label33.Name = "Label33"
-        Me.Label33.Size = New System.Drawing.Size(89, 13)
+        Me.Label33.Size = New System.Drawing.Size(150, 23)
         Me.Label33.TabIndex = 59
         Me.Label33.Text = "Total a cobrar:"
+        Me.Label33.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'lb_totaldesgloce
         '
         Me.lb_totaldesgloce.AutoSize = True
-        Me.lb_totaldesgloce.Location = New System.Drawing.Point(782, 175)
+        Me.lb_totaldesgloce.Location = New System.Drawing.Point(782, 188)
         Me.lb_totaldesgloce.Name = "lb_totaldesgloce"
         Me.lb_totaldesgloce.Size = New System.Drawing.Size(102, 13)
         Me.lb_totaldesgloce.TabIndex = 58
@@ -508,7 +518,7 @@ Partial Class form_planillaemp
         'lb_totalbilletes
         '
         Me.lb_totalbilletes.AutoSize = True
-        Me.lb_totalbilletes.Location = New System.Drawing.Point(782, 59)
+        Me.lb_totalbilletes.Location = New System.Drawing.Point(782, 70)
         Me.lb_totalbilletes.Name = "lb_totalbilletes"
         Me.lb_totalbilletes.Size = New System.Drawing.Size(92, 13)
         Me.lb_totalbilletes.TabIndex = 56
@@ -808,10 +818,11 @@ Partial Class form_planillaemp
         'lb_cedula_emp
         '
         Me.lb_cedula_emp.AutoSize = True
-        Me.lb_cedula_emp.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lb_cedula_emp.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lb_cedula_emp.ForeColor = System.Drawing.SystemColors.Highlight
         Me.lb_cedula_emp.Location = New System.Drawing.Point(761, 643)
         Me.lb_cedula_emp.Name = "lb_cedula_emp"
-        Me.lb_cedula_emp.Size = New System.Drawing.Size(93, 13)
+        Me.lb_cedula_emp.Size = New System.Drawing.Size(104, 16)
         Me.lb_cedula_emp.TabIndex = 38
         Me.lb_cedula_emp.Text = "lb_cedula_emp"
         '

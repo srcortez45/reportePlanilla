@@ -39,6 +39,7 @@ Partial Class form_login
         Me.txt_user.Font = New System.Drawing.Font("Nirmala UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_user.Location = New System.Drawing.Point(325, 209)
         Me.txt_user.Margin = New System.Windows.Forms.Padding(4)
+        Me.txt_user.MaxLength = 12
         Me.txt_user.Name = "txt_user"
         Me.txt_user.Size = New System.Drawing.Size(243, 43)
         Me.txt_user.TabIndex = 0
@@ -48,6 +49,7 @@ Partial Class form_login
         Me.txt_pass.Font = New System.Drawing.Font("Nirmala UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_pass.Location = New System.Drawing.Point(325, 334)
         Me.txt_pass.Margin = New System.Windows.Forms.Padding(4)
+        Me.txt_pass.MaxLength = 25
         Me.txt_pass.Name = "txt_pass"
         Me.txt_pass.PasswordChar = Global.Microsoft.VisualBasic.ChrW(8226)
         Me.txt_pass.Size = New System.Drawing.Size(243, 43)

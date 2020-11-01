@@ -40,7 +40,6 @@ F:\Proyect2-software8\Proyec2-REPPLAN1423.JossephCortez\Proyec2-REPPLAN1423.Joss
 F:\Proyect2-software8\Proyec2-REPPLAN1423.JossephCortez\Proyec2-REPPLAN1423.JossephCortez\obj\Debug\Proyec2_REPPLAN1423.JossephCortez.form_agregarRegistro.resources
 F:\Proyect2-software8\Proyec2-REPPLAN1423.JossephCortez\Proyec2-REPPLAN1423.JossephCortez\obj\Debug\Proyec2_REPPLAN1423.JossephCortez.form_eliminarRegistro.resources
 F:\Proyect2-software8\Proyec2-REPPLAN1423.JossephCortez\Proyec2-REPPLAN1423.JossephCortez\obj\Debug\Proyec2_REPPLAN1423.JossephCortez.form_planillaemp.resources
-C:\Users\yepin\Desktop\Proyect2-software8\Proyec2-REPPLAN1423.JossephCortez\Proyec2-REPPLAN1423.JossephCortez\obj\Debug\Proyec2-REPPLAN1423.JossephCortez.vbprojAssemblyReference.cache
 C:\Users\yepin\Desktop\Proyect2-software8\Proyec2-REPPLAN1423.JossephCortez\Proyec2-REPPLAN1423.JossephCortez\obj\Debug\Proyec2_REPPLAN1423.JossephCortez.form_actualizarRegistro.resources
 C:\Users\yepin\Desktop\Proyect2-software8\Proyec2-REPPLAN1423.JossephCortez\Proyec2-REPPLAN1423.JossephCortez\obj\Debug\Proyec2_REPPLAN1423.JossephCortez.form_agregarRegistro.resources
 C:\Users\yepin\Desktop\Proyect2-software8\Proyec2-REPPLAN1423.JossephCortez\Proyec2-REPPLAN1423.JossephCortez\obj\Debug\Proyec2_REPPLAN1423.JossephCortez.form_eliminarRegistro.resources
@@ -82,3 +81,4 @@ C:\Users\yepin\Desktop\Proyect2-software8\Proyec2-REPPLAN1423.JossephCortez\Proy
 C:\Users\yepin\Desktop\Proyect2-software8\Proyec2-REPPLAN1423.JossephCortez\Proyec2-REPPLAN1423.JossephCortez\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\yepin\Desktop\Proyect2-software8\Proyec2-REPPLAN1423.JossephCortez\Proyec2-REPPLAN1423.JossephCortez\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\yepin\Desktop\Proyect2-software8\Proyec2-REPPLAN1423.JossephCortez\Proyec2-REPPLAN1423.JossephCortez\obj\Debug\Proyec2-REPPLAN1423.JossephCortez.vbproj.CopyComplete
+C:\Users\yepin\Desktop\Proyect2-software8\Proyec2-REPPLAN1423.JossephCortez\Proyec2-REPPLAN1423.JossephCortez\obj\Debug\Proyec2-REPPLAN1423.JossephCortez.vbprojAssemblyReference.cache

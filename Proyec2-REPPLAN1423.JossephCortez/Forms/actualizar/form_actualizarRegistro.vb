@@ -1,5 +1,5 @@
 ﻿Public Class form_actualizarRegistro
-    Dim conexion As conexion = conexion.Instancia
+    ReadOnly conexion As Conexion = Conexion.Instancia
     Dim sexo As String
     Dim condicion As Boolean = True
 
@@ -55,7 +55,7 @@
         If (condicion) Then
             Dim resp As Integer = MsgBox("¿Esta seguro que desea actualizar el empleado" & vbCrLf & txt_empleado.Text & " con cedula: " & txt_cedula.Text & "?", MsgBoxStyle.YesNo)
             If (resp = MsgBoxResult.Yes) Then
-                conexion.actualizarRegistro(txt_cedula.Text,
+                conexion.ActualizarRegistro(txt_cedula.Text,
                                         txt_empleado.Text,
                                         sexo,
                                         txt_salario_mensual.Text,

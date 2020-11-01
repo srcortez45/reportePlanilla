@@ -1,6 +1,5 @@
 ﻿Public Class form_consultar
-
-    Dim conexion As conexion = conexion.Instancia
+    ReadOnly conexion As Conexion = Conexion.Instancia
     Dim cedula, empleado, sexo, salario_mensual, otros_desc As String
 
 
@@ -20,7 +19,7 @@
     End Sub
 
     Private Sub btn_planilla_Click(sender As Object, e As EventArgs) Handles btn_planilla.Click
-        form_planillaemp.mostrar()
+        form_planillaemp.Mostrar()
         form_planillaemp.Show()
         Me.Close()
     End Sub
@@ -43,7 +42,7 @@
     End Sub
 
     Sub consultarRegistro()
-        conexion.verRegistros(dg_empleados)
+        conexion.VerRegistros(dg_empleados)
     End Sub
 
     Private Sub form_consultar_Load(sender As Object, e As EventArgs) Handles MyBase.Load

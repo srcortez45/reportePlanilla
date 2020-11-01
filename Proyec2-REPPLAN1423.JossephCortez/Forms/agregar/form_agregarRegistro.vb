@@ -1,5 +1,5 @@
 ﻿Public Class form_agregarRegistro
-    Dim conexion As conexion = conexion.Instancia
+    ReadOnly conexion As Conexion = Conexion.Instancia
     Dim condicion As Boolean = True
     Dim sexo As String
     Private Sub btn_registrar_Click(sender As Object, e As EventArgs) Handles btn_registrar.Click
@@ -35,7 +35,7 @@
         If (condicion) Then
             Dim resp As Integer = MsgBox("¿Esta seguro que desea agregar el empleado" & vbCrLf & txt_empleado.Text & " con cedula: " & txt_cedula.Text & "?", MsgBoxStyle.YesNo)
             If (resp = MsgBoxResult.Yes) Then
-                conexion.agregarRegistro(txt_cedula.Text,
+                conexion.AgregarRegistro(txt_cedula.Text,
                                      txt_empleado.Text,
                                      sexo,
                                      txt_salario_mensual.Text,
