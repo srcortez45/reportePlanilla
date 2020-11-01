@@ -313,9 +313,12 @@ Partial Class form_planillaemp
         'Label26
         '
         Me.Label26.AutoSize = True
-        Me.Label26.Location = New System.Drawing.Point(782, 16)
+        Me.Label26.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label26.ForeColor = System.Drawing.Color.Red
+        Me.Label26.Location = New System.Drawing.Point(791, 17)
+        Me.Label26.Margin = New System.Windows.Forms.Padding(0)
         Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(49, 13)
+        Me.Label26.Size = New System.Drawing.Size(70, 19)
         Me.Label26.TabIndex = 25
         Me.Label26.Text = "Totales"
         '
@@ -363,7 +366,7 @@ Partial Class form_planillaemp
         Me.Panel1.Controls.Add(Me.Label3)
         Me.Panel1.Controls.Add(Me.Label6)
         Me.Panel1.Font = New System.Drawing.Font("MS Reference Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Panel1.Location = New System.Drawing.Point(297, 3)
+        Me.Panel1.Location = New System.Drawing.Point(284, 3)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(446, 164)
         Me.Panel1.TabIndex = 30
@@ -394,9 +397,9 @@ Partial Class form_planillaemp
         Me.GroupBox1.Controls.Add(Me.Label21)
         Me.GroupBox1.Controls.Add(Me.Label15)
         Me.GroupBox1.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(54, 162)
+        Me.GroupBox1.Location = New System.Drawing.Point(45, 162)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(900, 106)
+        Me.GroupBox1.Size = New System.Drawing.Size(909, 106)
         Me.GroupBox1.TabIndex = 31
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Datos de empleado:"
@@ -478,7 +481,7 @@ Partial Class form_planillaemp
         Me.GroupBox2.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox2.Location = New System.Drawing.Point(45, 403)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(900, 217)
+        Me.GroupBox2.Size = New System.Drawing.Size(909, 217)
         Me.GroupBox2.TabIndex = 32
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Desglose de Billetes y Monedas:"
@@ -490,7 +493,7 @@ Partial Class form_planillaemp
         Me.Label33.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Label33.Font = New System.Drawing.Font("Tahoma", 14.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label33.ForeColor = System.Drawing.Color.Red
-        Me.Label33.Location = New System.Drawing.Point(73, 178)
+        Me.Label33.Location = New System.Drawing.Point(77, 178)
         Me.Label33.Name = "Label33"
         Me.Label33.Size = New System.Drawing.Size(150, 23)
         Me.Label33.TabIndex = 59
@@ -500,16 +503,18 @@ Partial Class form_planillaemp
         'lb_totaldesgloce
         '
         Me.lb_totaldesgloce.AutoSize = True
-        Me.lb_totaldesgloce.Location = New System.Drawing.Point(782, 188)
+        Me.lb_totaldesgloce.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lb_totaldesgloce.ForeColor = System.Drawing.Color.Red
+        Me.lb_totaldesgloce.Location = New System.Drawing.Point(749, 178)
         Me.lb_totaldesgloce.Name = "lb_totaldesgloce"
-        Me.lb_totaldesgloce.Size = New System.Drawing.Size(102, 13)
+        Me.lb_totaldesgloce.Size = New System.Drawing.Size(146, 19)
         Me.lb_totaldesgloce.TabIndex = 58
         Me.lb_totaldesgloce.Text = "lb_totalDesgloce"
         '
         'lb_totalmonedas
         '
         Me.lb_totalmonedas.AutoSize = True
-        Me.lb_totalmonedas.Location = New System.Drawing.Point(792, 137)
+        Me.lb_totalmonedas.Location = New System.Drawing.Point(792, 138)
         Me.lb_totalmonedas.Name = "lb_totalmonedas"
         Me.lb_totalmonedas.Size = New System.Drawing.Size(103, 13)
         Me.lb_totalmonedas.TabIndex = 57
@@ -518,7 +523,7 @@ Partial Class form_planillaemp
         'lb_totalbilletes
         '
         Me.lb_totalbilletes.AutoSize = True
-        Me.lb_totalbilletes.Location = New System.Drawing.Point(782, 70)
+        Me.lb_totalbilletes.Location = New System.Drawing.Point(792, 70)
         Me.lb_totalbilletes.Name = "lb_totalbilletes"
         Me.lb_totalbilletes.Size = New System.Drawing.Size(92, 13)
         Me.lb_totalbilletes.TabIndex = 56
@@ -688,7 +693,7 @@ Partial Class form_planillaemp
         Me.GroupBox3.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox3.Location = New System.Drawing.Point(45, 274)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(900, 123)
+        Me.GroupBox3.Size = New System.Drawing.Size(909, 123)
         Me.GroupBox3.TabIndex = 30
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Descuentos"

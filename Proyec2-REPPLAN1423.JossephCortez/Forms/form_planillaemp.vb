@@ -1,32 +1,59 @@
 ﻿
 Public Class form_planillaemp
     ReadOnly calculos As Calculos = Calculos.Instancia
+    ReadOnly conexion As Conexion = Conexion.Instancia
     Dim condicion As Boolean = True
     Dim totalregistros As String
-    ReadOnly conexion As conexion = conexion.Instancia
-    Dim pos As Integer = 0
+    Dim pos As Integer
 
-    Public Sub Mostrar()
+
+    Dim TotalPlanilla As Double
+
+    Dim name_min, name_max, sal_min, sal_max As String
+
+    Dim name_min_M, name_max_M, sal_min_M, sal_max_M As String
+
+    Dim name_min_F, name_max_F, sal_min_F, sal_max_F As String
+
+    Private Sub Mostrar()
         conexion.TraerRegistro(pos.ToString)
         CalcularPago()
         EnviarDatoPago()
-        'NormalizarSalida()
+        NormalizarSalida()
+        pos += 1
     End Sub
 
     Private Sub btn_aceptar_Click(sender As Object, e As EventArgs) Handles btn_aceptar.Click
+
         If pos = Integer.Parse(totalregistros) Then
             condicion = False
             btn_aceptar.Visible = False
-            MsgBox("EL ULTIMO REGISTRO YA FUE LEÍDO")
+            Dim resp As Integer = MsgBox("¿Desea ver el resumen de la planilla?", MsgBoxStyle.YesNo, "INFORMACIÓN")
+            If (resp = MsgBoxResult.Yes) Then
+                form_resumenplan.EnviarMontoPlanilla(TotalPlanilla)
+
+                form_resumenplan.AsignarResultados_Sal_neto(name_min, name_max, sal_min, sal_max)
+                form_resumenplan.AsignarResultados_Men(name_min_M, name_max_M, sal_min_M, sal_max_M)
+                form_resumenplan.AsignarResultados_Mujer(name_min_F, name_max_F, sal_min_F, sal_max_F)
+
+                form_resumenplan.Show()
+                Me.Close()
+            Else
+                Me.Close()
+            End If
         End If
+
         If condicion Then
-            pos += 1
             Mostrar()
         End If
+
+
+
     End Sub
 
     Private Sub form_planillaemp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         totalregistros = conexion.TotalRegistros
+        Mostrar()
     End Sub
 
     Private Sub CalcularPago()
@@ -61,6 +88,35 @@ Public Class form_planillaemp
                                 lb_totalbilletes.Text,
                                 lb_totalmonedas.Text,
                                 lb_totaldesgloce.Text)
+
+        TotalPlanilla += lb_totaldesgloce.Text
+        Max_Mix_Sal()
+    End Sub
+    Private Sub Max_Mix_Sal()
+
+
+        calculos.MenorEmp(lb_empleado.Text, lb_salario_mensual.Text,
+                          name_min, sal_min)
+
+        calculos.MayorEmp(lb_empleado.Text, lb_salario_mensual.Text,
+                          name_max, sal_max)
+
+        If lb_sexo.Text.Equals("M") Then
+
+            calculos.MenorEmp(lb_empleado.Text, lb_salario_mensual.Text,
+                              name_min_M, sal_min_M)
+
+            calculos.MayorEmp(lb_empleado.Text, lb_salario_mensual.Text,
+                          name_max_M, sal_max_M)
+
+        Else
+
+            calculos.MenorEmp(lb_empleado.Text, lb_salario_mensual.Text,
+                              name_min_F, sal_min_F)
+
+            calculos.MayorEmp(lb_empleado.Text, lb_salario_mensual.Text,
+                         name_max_F, sal_max_F)
+        End If
 
     End Sub
     Private Sub EnviarDatoPago()

@@ -2,35 +2,13 @@
     ReadOnly conexion As Conexion = Conexion.Instancia
     Dim cedula, empleado, sexo, salario_mensual, otros_desc As String
 
+    Private Sub form_consultar_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        consultarRegistro()
+    End Sub
 
     Private Sub btn_agregarRegistro_Click(sender As Object, e As EventArgs) Handles btn_agregarRegistro.Click
         Me.Hide()
         form_agregarRegistro.Show()
-    End Sub
-
-    Private Sub btn_eliminarRegistro_Click(sender As Object, e As EventArgs) Handles btn_eliminarRegistro.Click
-
-        seleccionarDatosEmp()
-        form_eliminarRegistro.datosEmpleado(cedula, empleado, sexo, salario_mensual, otros_desc)
-        Me.Hide()
-        form_eliminarRegistro.Show()
-
-
-    End Sub
-
-    Private Sub btn_planilla_Click(sender As Object, e As EventArgs) Handles btn_planilla.Click
-        form_planillaemp.Mostrar()
-        form_planillaemp.Show()
-        Me.Close()
-    End Sub
-
-    Private Sub btn_cerrar_Click(sender As Object, e As EventArgs) Handles btn_cerrar.Click
-        Dim resp = MsgBox("¿Desea cerrar sesión?", MsgBoxStyle.YesNo)
-        If (resp = MsgBoxResult.Yes) Then
-            form_login.Show()
-            Me.Close()
-        End If
-
     End Sub
 
     Private Sub btn_actualizarRegistro_Click(sender As Object, e As EventArgs) Handles btn_actualizarRegistro.Click
@@ -40,14 +18,19 @@
         Me.Hide()
         form_actualizarRegistro.Show()
     End Sub
+    Private Sub btn_eliminarRegistro_Click(sender As Object, e As EventArgs) Handles btn_eliminarRegistro.Click
 
-    Sub consultarRegistro()
+        seleccionarDatosEmp()
+        form_eliminarRegistro.datosEmpleado(cedula, empleado, sexo, salario_mensual, otros_desc)
+        Me.Hide()
+        form_eliminarRegistro.Show()
+
+    End Sub
+
+    Public Sub ConsultarRegistro()
         conexion.VerRegistros(dg_empleados)
     End Sub
 
-    Private Sub form_consultar_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        consultarRegistro()
-    End Sub
 
     Private Sub seleccionarDatosEmp()
         cedula = dg_empleados.CurrentRow.Cells(0).Value.ToString
@@ -57,6 +40,18 @@
         otros_desc = dg_empleados.CurrentRow.Cells(4).Value.ToString
     End Sub
 
+    Private Sub btn_planilla_Click(sender As Object, e As EventArgs) Handles btn_planilla.Click
+        form_planillaemp.Show()
+        Me.Close()
+    End Sub
+    Private Sub btn_cerrar_Click(sender As Object, e As EventArgs) Handles btn_cerrar.Click
+        Dim resp = MsgBox("¿Desea cerrar sesión?", MsgBoxStyle.YesNo)
+        If (resp = MsgBoxResult.Yes) Then
+            form_login.Show()
+            Me.Close()
+        End If
+
+    End Sub
 
 
 
