@@ -4,7 +4,7 @@
     Dim condicion As Boolean = True
 
     'MODULO PARA SOLICITAR LA INFO AL FORM DE CONSULTA
-    Sub datosEmpleado(ByVal cedula As String, ByVal empleado As String, ByVal sexo As String, ByVal salario_mensual As String, ByVal otros_desc As String)
+    Public Sub datosEmpleado(ByVal cedula As String, ByVal empleado As String, ByVal sexo As String, ByVal salario_mensual As String, ByVal otros_desc As String)
         txt_cedula.Text = cedula
         txt_empleado.Text = empleado
         If (sexo.Contains("M")) Then
@@ -51,7 +51,7 @@
             condicion = False
         End If
 
-        'SI LA INFO ES VALIDA AGREGA EL REGISTRO
+        'SI LA INFO ES VALIDA ACTUALIZA EL REGISTRO
         If (condicion) Then
             Dim resp As Integer = MsgBox("¿Esta seguro que desea actualizar el empleado" & vbCrLf & txt_empleado.Text & " con cedula: " & txt_cedula.Text & "?", MsgBoxStyle.YesNo)
             If (resp = MsgBoxResult.Yes) Then
@@ -123,6 +123,8 @@
         End If
 
     End Sub
+
+
 
     'MODULO DE INFORMACION PARA EL USUARIO
 
