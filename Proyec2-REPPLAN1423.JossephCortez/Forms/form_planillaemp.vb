@@ -6,6 +6,7 @@ Public Class form_planillaemp
     Dim totalregistros As String
     Dim pos As Integer
 
+    'VARIABLES TEMPORALES PARA GUARDAR LOS DATOS SOLICITADOS
 
     Dim TotalPlanilla As Double
 
@@ -15,6 +16,14 @@ Public Class form_planillaemp
 
     Dim name_min_F, name_max_F, sal_min_F, sal_max_F As String
 
+    'SE VERIFICA EL TOTAL DE REGISTROS
+    Private Sub form_planillaemp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        totalregistros = conexion.TotalRegistros
+        Mostrar()
+    End Sub
+
+    'SE CARGA EL REGISTRO, SE REALIZAN LOS CALCULOS, SE ENVIAN LOS DATOS DE PAGO 
+    'Y SE NORMALIZA LA SALIDA PARA QUE SE MUESTRE CORRECTAMENTE 
     Private Sub Mostrar()
         conexion.TraerRegistro(pos.ToString)
         CalcularPago()
@@ -23,6 +32,7 @@ Public Class form_planillaemp
         pos += 1
     End Sub
 
+    'MIENTRAS LA CONDICION SEA VERDADERA SE VOLVERA A MOSTRAR EL SIGUIENTE REGISTRO
     Private Sub btn_aceptar_Click(sender As Object, e As EventArgs) Handles btn_aceptar.Click
 
         If pos = Integer.Parse(totalregistros) Then
@@ -47,15 +57,14 @@ Public Class form_planillaemp
             Mostrar()
         End If
 
+        'SI LA POS ES IGUAL AL TOTAL DE REGISTROS SIGNIFICA QUE YA TODOS LOS REGISTROS FUERON LEIDOS
+        'Y SE PASA AL RESUMEN DE LA PLANILLA
+
 
 
     End Sub
 
-    Private Sub form_planillaemp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        totalregistros = conexion.TotalRegistros
-        Mostrar()
-    End Sub
-
+    'SE ENVIAN LOS DATOS DEL REGISTRO PARA REALIZAR LOS CALCULOS
     Private Sub CalcularPago()
 
         lb_salario_quincenal.Text = calculos.CalcularSalarioQuincenal(lb_salario_mensual.Text)
@@ -73,6 +82,7 @@ Public Class form_planillaemp
 
         lb_salario_neto.Text = calculos.CalcularSalarioNeto(lb_salario_quincenal.Text, lb_total_desc.Text)
 
+        'SE ENVIA EL SALARIO MENSUAL PARA REALIZAR EL DESGLOCE DEL DINERO
 
         calculos.DesgloseDinero(lb_salario_mensual.Text,
                                 txt_billetes50.Text,
@@ -92,6 +102,7 @@ Public Class form_planillaemp
         TotalPlanilla += lb_totaldesgloce.Text
         Max_Mix_Sal()
     End Sub
+    'MODULO PARA CALCULAR EL MAYOR Y MENOR
     Private Sub Max_Mix_Sal()
 
 
@@ -119,6 +130,8 @@ Public Class form_planillaemp
         End If
 
     End Sub
+
+    'MODULO PARA ENVIAR LOS DATOS DE PAGO AL REGISTRO
     Private Sub EnviarDatoPago()
         conexion.EnviarDatosPago(lb_cedula_emp.Text,
                                  lb_salario_quincenal.Text,
@@ -131,6 +144,7 @@ Public Class form_planillaemp
 
     End Sub
 
+    'MODULO PARA NORMALIZAR LA SALIDA Y QUE SE MUESTRE CORRECTAMENTE
     Private Sub NormalizarSalida()
         lb_salario_mensual.Text += " $"
         lb_salario_quincenal.Text += " $"

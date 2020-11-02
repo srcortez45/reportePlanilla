@@ -1,7 +1,7 @@
 ﻿
 Public Class Calculos
 
-
+    'MODULO PARA GENERAR INSTANCIA DE LA CLASE
     Public Shared ReadOnly Property Instancia As Calculos
         Get
             Static INST As Calculos = New Calculos
@@ -9,6 +9,7 @@ Public Class Calculos
         End Get
     End Property
 
+    'MODULO PARA REALIZAR EL REDONDEO DEL NUMERO CON 2 DECIMALES
     Public Function Redondear(dNumero As Double, iDecimales As Integer) As Double
         Dim lMultiplicador As Long
         Dim dRetorno As Double
@@ -20,7 +21,7 @@ Public Class Calculos
         Redondear = dRetorno
     End Function
 
-
+    'MODULOS PARA REALIZAR LOS DIFERENTES CALCULOS SOLICITADOS
 
     Function CalcularSalarioQuincenal(ByVal salario_mensual As String) As String
 
@@ -68,6 +69,9 @@ Public Class Calculos
         Return Redondear(salario_quincenal - totalDesc, 2)
     End Function
 
+
+
+    'MODULO PARA OBTENER EL EMP CON MAYO Y MENOR SALARIO
     Public Sub MayorEmp(ByVal name As String, ByVal sal As String, ByRef sal_max As String, ByRef name_max As String)
         If sal > sal_max Then
             sal_max = sal
@@ -86,7 +90,7 @@ Public Class Calculos
         End If
     End Sub
 
-
+    'MODULO PARA REALIZAR EL DESGLOCE DE DINERO
     Public Sub DesgloseDinero(ByVal monto As Double,
                                ByRef txt_billetes50 As String,
                                ByRef txt_billetes20 As String,

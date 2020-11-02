@@ -54,19 +54,19 @@ Public Class Conexion
 
 
     'MODULO PARA AGREGAR REGISTRO
-    Public Sub AgregarRegistro(ByVal cedula As String, ByVal nombre As String, ByVal sexo As String, ByVal salario_mensual As String, ByVal otros_desc As String)
+    Public Sub AgregarRegistro(ByVal cedula As String, ByVal empleado As String, ByVal sexo As String, ByVal salario_mensual As String, ByVal otros_desc As String)
         sqlconexion.Open()
         sqlcomandos.Connection = sqlconexion
-        sqlcomandos.CommandText = "INSERT INTO `tabdetapla`(`cedula`,`empleados`, `sexo`, `salario_mensual`, `otros_desc`) VALUES (?cedula,?empleados,?sexo,?salario_mensual,?otros_desc)"
+        sqlcomandos.CommandText = "INSERT INTO `tabdetapla`(`cedula`,`empleado`, `sexo`, `salario_mensual`, `otros_desc`) VALUES (?cedula,?empleado,?sexo,?salario_mensual,?otros_desc)"
         sqlcomandos.Parameters.AddWithValue("?cedula", cedula)
-        sqlcomandos.Parameters.AddWithValue("?empleados", nombre)
+        sqlcomandos.Parameters.AddWithValue("?empleado", empleado)
         sqlcomandos.Parameters.AddWithValue("?sexo", sexo)
         sqlcomandos.Parameters.AddWithValue("?salario_mensual", salario_mensual)
         sqlcomandos.Parameters.AddWithValue("?otros_desc", otros_desc)
         sqlcomandos.ExecuteNonQuery()
         sqlcomandos.Parameters.Clear()
         sqlconexion.Close()
-        MsgBox("EL REGISTRO SE AÑADIO CON EXITO")
+        MsgBox("EL REGISTRO SE AÑADIO CON EXITO", MsgBoxStyle.OkOnly, "INFORMACIÓN DE DATOS")
 
     End Sub
 
@@ -80,7 +80,7 @@ Public Class Conexion
         sqlcomandos.ExecuteNonQuery()
         sqlcomandos.Parameters.Clear()
         sqlconexion.Close()
-        MsgBox("EL REGISTRO HA SIDO ELIMINADO")
+        MsgBox("EL REGISTRO HA SIDO ELIMINADO", MsgBoxStyle.OkOnly, "INFORMACIÓN DE DATOS")
     End Sub
 
 
@@ -88,16 +88,16 @@ Public Class Conexion
     Public Sub ActualizarRegistro(ByVal cedula As String, ByVal empleado As String, ByVal sexo As String, ByVal salario_mensual As String, ByVal otros_desc As String)
         sqlconexion.Open()
         sqlcomandos.Connection = sqlconexion
-        sqlcomandos.CommandText = "UPDATE `tabdetapla` SET cedula = @cedula ,empleados = @empleados, sexo = @sexo, salario_mensual = @salario_mensual, otros_desc = @otros_desc WHERE cedula = @cedula"
+        sqlcomandos.CommandText = "UPDATE `tabdetapla` SET cedula = @cedula ,empleado = @empleado, sexo = @sexo, salario_mensual = @salario_mensual, otros_desc = @otros_desc WHERE cedula = @cedula"
         sqlcomandos.Parameters.AddWithValue("@cedula", cedula)
-        sqlcomandos.Parameters.AddWithValue("@empleados", empleado)
+        sqlcomandos.Parameters.AddWithValue("@empleado", empleado)
         sqlcomandos.Parameters.AddWithValue("@sexo", sexo)
         sqlcomandos.Parameters.AddWithValue("@salario_mensual", salario_mensual)
         sqlcomandos.Parameters.AddWithValue("@otros_desc", otros_desc)
         sqlcomandos.ExecuteNonQuery()
         sqlcomandos.Parameters.Clear()
         sqlconexion.Close()
-        MsgBox("EL REGISTRO HA SIDO ACTUALIZADO")
+        MsgBox("EL REGISTRO HA SIDO ACTUALIZADO", MsgBoxStyle.OkOnly, "INFORMACIÓN DE DATOS")
     End Sub
 
 
@@ -130,7 +130,7 @@ Public Class Conexion
     Public Sub EnviarDatosPago(ByVal cedula As String, ByVal salario_quincenal As String, ByVal seg_social As String, ByVal seg_edu As String, ByVal imp_renta As String, ByVal monto_otros_desc As String, ByVal total_desc As String, ByVal salario_neto As String)
         sqlconexion.Open()
         sqlcomandos.Connection = sqlconexion
-        sqlcomandos.CommandText = "UPDATE `tabpagoplan` SET salario_quincenal = @salario_quincenal, seguro_social = @seguro_social,seguro_educativo = @seguro_educativo, imp_renta = @imp_renta, monto_otros_desc = @monto_otros_desc ,total_desc = @total_desc ,salario_neto = @salario_neto WHERE cedula = @cedula"
+        sqlcomandos.CommandText = "UPDATE `tabdepago` SET salario_quincenal = @salario_quincenal, seguro_social = @seguro_social,seguro_educativo = @seguro_educativo, imp_renta = @imp_renta, monto_otros_desc = @monto_otros_desc ,total_desc = @total_desc ,salario_neto = @salario_neto WHERE cedula = @cedula"
         sqlcomandos.Parameters.AddWithValue("@cedula", cedula)
         sqlcomandos.Parameters.AddWithValue("@salario_quincenal", salario_quincenal)
         sqlcomandos.Parameters.AddWithValue("@seguro_social", seg_social)
@@ -148,7 +148,7 @@ Public Class Conexion
 
     End Sub
 
-    'MODUULO PARA OBTENER EL TOTAL DE REGISTROS
+    'MODULO PARA OBTENER EL TOTAL DE REGISTROS
 
     ReadOnly Property TotalRegistros As String
         Get

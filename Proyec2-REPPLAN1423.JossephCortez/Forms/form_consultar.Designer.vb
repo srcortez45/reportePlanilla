@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class form_consultar
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class form_consultar
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -34,7 +34,6 @@ Partial Class form_consultar
         Me.btn_planilla = New System.Windows.Forms.Button()
         Me.btn_cerrar = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.btn_administracion = New System.Windows.Forms.Button()
         CType(Me.dg_empleados, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btn_cerrar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -154,22 +153,12 @@ Partial Class form_consultar
         Me.Label1.TabIndex = 12
         Me.Label1.Text = "REGISTRO DE EMPLEADOS"
         '
-        'btn_administracion
-        '
-        Me.btn_administracion.Location = New System.Drawing.Point(31, 37)
-        Me.btn_administracion.Name = "btn_administracion"
-        Me.btn_administracion.Size = New System.Drawing.Size(79, 23)
-        Me.btn_administracion.TabIndex = 13
-        Me.btn_administracion.Text = "Button1"
-        Me.btn_administracion.UseVisualStyleBackColor = True
-        '
         'form_consultar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Highlight
         Me.ClientSize = New System.Drawing.Size(900, 500)
-        Me.Controls.Add(Me.btn_administracion)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btn_cerrar)
         Me.Controls.Add(Me.btn_planilla)
@@ -195,5 +184,4 @@ Partial Class form_consultar
     Friend WithEvents btn_planilla As Button
     Friend WithEvents btn_cerrar As PictureBox
     Friend WithEvents Label1 As Label
-    Friend WithEvents btn_administracion As Button
 End Class

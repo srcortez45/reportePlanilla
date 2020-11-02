@@ -1,7 +1,11 @@
 ﻿Public Class form_agregarRegistro
+
+    'VARRIABLES DE CONEXION Y  2 VARIABLES TEMPORALES
+
     ReadOnly conexion As Conexion = Conexion.Instancia
     Dim condicion As Boolean = True
     Dim sexo As String
+
     Private Sub btn_registrar_Click(sender As Object, e As EventArgs) Handles btn_registrar.Click
 
         'SE VERIFICAN LOS ESPACIOS EN BLANCO
@@ -41,7 +45,7 @@
                                      txt_salario_mensual.Text,
                                      txt_otros_desc.Text)
                 Me.Close()
-                form_consultar.consultarRegistro()
+                form_consultar.ConsultarRegistro()
                 form_consultar.Show()
             End If
         End If
