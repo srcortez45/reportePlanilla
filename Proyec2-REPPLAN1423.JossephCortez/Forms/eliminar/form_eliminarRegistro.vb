@@ -1,5 +1,5 @@
 ﻿Public Class form_eliminarRegistro
-    ReadOnly conexion As Conexion = Conexion.Instancia
+    ReadOnly tabla As Tabdetapla = Tabdetapla.Instancia
 
     'MODULO PARA SOLICITAR LA INFO AL FORM CONSULTA
     Public Sub datosEmpleado(ByVal cedula As String, ByVal empleado As String, ByVal sexo As String, ByVal salario_mensual As String, ByVal otros_desc As String)
@@ -18,7 +18,7 @@
     Private Sub btn_eliminar_Click(sender As Object, e As EventArgs) Handles btn_eliminar.Click
         Dim resp As Integer = MsgBox("¿Esta seguro que desea eliminar el empleado" & vbCrLf & txt_empleado.Text & " con cedula: " & txt_cedula.Text & "?", MsgBoxStyle.YesNo)
         If (resp = MsgBoxResult.Yes) Then
-            conexion.EliminarRegistro(txt_empleado.Text)
+            tabla.EliminarRegistro(txt_empleado.Text)
             form_consultar.consultarRegistro()
             form_consultar.Show()
             Me.Close()

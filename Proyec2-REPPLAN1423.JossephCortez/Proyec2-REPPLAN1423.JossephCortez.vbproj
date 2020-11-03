@@ -172,6 +172,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CRUD\conexion.vb" />
+    <Compile Include="CRUD\Tabdepago\Tabdepago.vb" />
+    <Compile Include="CRUD\Tabdetapla\Tabdetapla.vb" />
     <Compile Include="Forms\actualizar\form_actualizarRegistro.Designer.vb">
       <DependentUpon>form_actualizarRegistro.vb</DependentUpon>
     </Compile>
@@ -274,10 +276,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="CRUD\Tabpagoplan\" />
-    <Folder Include="CRUD\Tandetapla\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>

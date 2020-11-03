@@ -1,7 +1,8 @@
 ﻿
 Public Class form_planillaemp
     ReadOnly calculos As Calculos = Calculos.Instancia
-    ReadOnly conexion As Conexion = Conexion.Instancia
+    ReadOnly tabla As Tabdetapla = Tabdetapla.Instancia
+    ReadOnly pago As Tabdepago = Tabdepago.Instancia
     Dim condicion As Boolean = True
     Dim totalregistros As String
     Dim pos As Integer
@@ -18,14 +19,14 @@ Public Class form_planillaemp
 
     'SE VERIFICA EL TOTAL DE REGISTROS
     Private Sub form_planillaemp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        totalregistros = conexion.TotalRegistros
+        totalregistros = tabla.TotalRegistros
         Mostrar()
     End Sub
 
     'SE CARGA EL REGISTRO, SE REALIZAN LOS CALCULOS, SE ENVIAN LOS DATOS DE PAGO 
     'Y SE NORMALIZA LA SALIDA PARA QUE SE MUESTRE CORRECTAMENTE 
     Private Sub Mostrar()
-        conexion.TraerRegistro(pos.ToString)
+        tabla.TraerRegistro(pos.ToString)
         CalcularPago()
         EnviarDatoPago()
         NormalizarSalida()
@@ -133,7 +134,7 @@ Public Class form_planillaemp
 
     'MODULO PARA ENVIAR LOS DATOS DE PAGO AL REGISTRO
     Private Sub EnviarDatoPago()
-        conexion.EnviarDatosPago(lb_cedula_emp.Text,
+        pago.EnviarDatosPago(lb_cedula_emp.Text,
                                  lb_salario_quincenal.Text,
                                  lb_seg_social.Text,
                                  lb_seg_edu.Text,

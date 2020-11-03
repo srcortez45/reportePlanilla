@@ -23,37 +23,16 @@ Partial Class form_login
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(form_login))
-        Me.txt_user = New System.Windows.Forms.TextBox()
-        Me.txt_pass = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.btn_logindb = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.btn_salir = New System.Windows.Forms.Button()
+        Me.txt_pass = New System.Windows.Forms.TextBox()
+        Me.txt_user = New System.Windows.Forms.TextBox()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'txt_user
-        '
-        Me.txt_user.Font = New System.Drawing.Font("Nirmala UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txt_user.Location = New System.Drawing.Point(325, 209)
-        Me.txt_user.Margin = New System.Windows.Forms.Padding(4)
-        Me.txt_user.MaxLength = 12
-        Me.txt_user.Name = "txt_user"
-        Me.txt_user.Size = New System.Drawing.Size(243, 43)
-        Me.txt_user.TabIndex = 0
-        '
-        'txt_pass
-        '
-        Me.txt_pass.Font = New System.Drawing.Font("Nirmala UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txt_pass.Location = New System.Drawing.Point(325, 334)
-        Me.txt_pass.Margin = New System.Windows.Forms.Padding(4)
-        Me.txt_pass.MaxLength = 25
-        Me.txt_pass.Name = "txt_pass"
-        Me.txt_pass.PasswordChar = Global.Microsoft.VisualBasic.ChrW(8226)
-        Me.txt_pass.Size = New System.Drawing.Size(243, 43)
-        Me.txt_pass.TabIndex = 1
         '
         'Label1
         '
@@ -120,6 +99,27 @@ Partial Class form_login
         Me.btn_salir.Text = "Salir"
         Me.btn_salir.UseVisualStyleBackColor = True
         '
+        'txt_pass
+        '
+        Me.txt_pass.Font = New System.Drawing.Font("Nirmala UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_pass.Location = New System.Drawing.Point(325, 334)
+        Me.txt_pass.Margin = New System.Windows.Forms.Padding(4)
+        Me.txt_pass.MaxLength = 25
+        Me.txt_pass.Name = "txt_pass"
+        Me.txt_pass.PasswordChar = Global.Microsoft.VisualBasic.ChrW(8226)
+        Me.txt_pass.Size = New System.Drawing.Size(243, 43)
+        Me.txt_pass.TabIndex = 1
+        '
+        'txt_user
+        '
+        Me.txt_user.Font = New System.Drawing.Font("Nirmala UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_user.Location = New System.Drawing.Point(325, 209)
+        Me.txt_user.Margin = New System.Windows.Forms.Padding(4)
+        Me.txt_user.MaxLength = 12
+        Me.txt_user.Name = "txt_user"
+        Me.txt_user.Size = New System.Drawing.Size(243, 43)
+        Me.txt_user.TabIndex = 0
+        '
         'form_login
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 17.0!)
@@ -148,13 +148,12 @@ Partial Class form_login
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents txt_user As TextBox
-    Friend WithEvents txt_pass As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents btn_logindb As Button
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Panel1 As Panel
     Friend WithEvents btn_salir As Button
+    Friend WithEvents txt_pass As TextBox
+    Friend WithEvents txt_user As TextBox
 End Class
