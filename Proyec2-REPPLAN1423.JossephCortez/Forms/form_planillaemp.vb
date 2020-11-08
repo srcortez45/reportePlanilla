@@ -1,8 +1,8 @@
 ﻿
 Public Class form_planillaemp
     ReadOnly calculos As Calculos = Calculos.Instancia
-    ReadOnly tabla As Tabdetapla = Tabdetapla.Instancia
-    ReadOnly pago As Tabdepago = Tabdepago.Instancia
+    ReadOnly modelotabdetapla As New ModeloTabdetapla()
+    ReadOnly modelotabdepago As New ModeloTabdepago()
     Dim totalregistros As String
     Dim pos As Integer
 
@@ -18,14 +18,14 @@ Public Class form_planillaemp
 
     'SE VERIFICA EL TOTAL DE REGISTROS
     Private Sub form_planillaemp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        totalregistros = tabla.TotalRegistros
+        totalregistros = modelotabdetapla.TotalRegistros
         Mostrar()
     End Sub
 
     'SE CARGA EL REGISTRO, SE REALIZAN LOS CALCULOS, SE ENVIAN LOS DATOS DE PAGO 
     'Y SE NORMALIZA LA SALIDA PARA QUE SE MUESTRE CORRECTAMENTE 
     Private Sub Mostrar()
-        tabla.TraerRegistro(pos.ToString)
+        modelotabdetapla.TraerRegistro(pos.ToString)
         CalcularPago()
         EnviarDatoPago()
         NormalizarSalida()
@@ -130,9 +130,9 @@ Public Class form_planillaemp
 
     'MODULO PARA ENVIAR LOS DATOS DE PAGO AL REGISTRO
     Private Sub EnviarDatoPago()
-        If pago.VerificarRegistroPago(lb_cedula_emp.Text) Then
+        If modelotabdepago.VerificarRegistroPago(lb_cedula_emp.Text) Then
 
-            pago.ActualizarDatosPago(lb_cedula_emp.Text,
+            modelotabdepago.ActualizarDatosPago(lb_cedula_emp.Text,
                                  lb_salario_quincenal.Text,
                                  lb_seg_social.Text,
                                  lb_seg_edu.Text,
@@ -141,7 +141,7 @@ Public Class form_planillaemp
                                  lb_total_desc.Text,
                                  lb_salario_neto.Text)
         Else
-            pago.InsertarDatosPago(lb_cedula_emp.Text,
+            modelotabdepago.InsertarDatosPago(lb_cedula_emp.Text,
                      lb_salario_quincenal.Text,
                      lb_seg_social.Text,
                      lb_seg_edu.Text,

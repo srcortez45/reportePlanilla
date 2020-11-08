@@ -15,12 +15,12 @@
 
     'SE REALIZA LA VERIFICACIÓN PARA ELIMINAR EL EMP
     Private Sub btn_eliminar_Click(sender As Object, e As EventArgs) Handles btn_eliminar.Click
-        Dim resp As Integer = MsgBox("¿Esta seguro que desea eliminar el empleado" & vbCrLf & txt_empleado.Text & " con cedula: " & txt_cedula.Text & "?", MsgBoxStyle.YesNo)
+        Dim resp = MsgBox("¿Esta seguro que desea eliminar el empleado" & vbCrLf & txt_empleado.Text & " con cedula: " & txt_cedula.Text & "?", MsgBoxStyle.YesNo)
 
-        If (resp = MsgBoxResult.Yes) Then
-            Dim eliminarPago = Tabdepago.Instancia
+        If resp = MsgBoxResult.Yes Then
+            Dim eliminarPago As New ModeloTabdepago()
             eliminarPago.EliminarDatosPago(txt_cedula.Text)
-            Dim eliminarRegistro = Tabdetapla.Instancia
+            Dim eliminarRegistro As New ModeloTabdetapla()
             eliminarRegistro.EliminarRegistro(txt_cedula.Text)
             form_consultar.ConsultarRegistro()
             form_consultar.Show()

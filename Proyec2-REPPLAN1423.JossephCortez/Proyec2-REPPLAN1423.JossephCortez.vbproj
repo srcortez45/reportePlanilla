@@ -172,8 +172,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CRUD\conexion.vb" />
-    <Compile Include="CRUD\Tabdepago\Tabdepago.vb" />
-    <Compile Include="CRUD\Tabdetapla\Tabdetapla.vb" />
+    <Compile Include="CRUD\Tabdepago\ModeloTabdepago.vb" />
+    <Compile Include="CRUD\Tabdepago\TabdepagoDAO.vb" />
+    <Compile Include="CRUD\Tabdetapla\ModeloTabdetapla.vb" />
+    <Compile Include="CRUD\Tabdetapla\TabdetaplaDAO.vb" />
     <Compile Include="Forms\actualizar\form_actualizarRegistro.Designer.vb">
       <DependentUpon>form_actualizarRegistro.vb</DependentUpon>
     </Compile>

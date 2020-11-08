@@ -1,15 +1,9 @@
 ﻿
 Imports MySql.Data.MySqlClient
 
-Public Class Tabdepago
+Public Class TabdepagoDAO
     Inherits Conexion
 
-    Public Shared ReadOnly Property Instancia As Tabdepago
-        Get
-            Static INST As Tabdepago = New Tabdepago()
-            Return INST
-        End Get
-    End Property
 
     ReadOnly Property VerificarRegistroPago(cedula As String) As Boolean
         Get

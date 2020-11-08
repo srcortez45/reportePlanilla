@@ -1,5 +1,5 @@
 ﻿Public Class form_actualizarRegistro
-    ReadOnly tabla As Tabdetapla = Tabdetapla.Instancia
+
     Dim sexo As String
     Dim condicion As Boolean = True
 
@@ -51,20 +51,13 @@
             condicion = False
         End If
 
-        If tabla.VerificarRegistro(txt_cedula.Text) Then
-
-
-        End If
 
         'SI LA INFO ES VALIDA ACTUALIZA EL REGISTRO
         If (condicion) Then
             Dim resp As Integer = MsgBox("¿Esta seguro que desea actualizar el empleado" & vbCrLf & txt_empleado.Text & " con cedula: " & txt_cedula.Text & "?", MsgBoxStyle.YesNo)
             If (resp = MsgBoxResult.Yes) Then
-                tabla.ActualizarRegistro(txt_cedula.Text,
-                                        txt_empleado.Text,
-                                        sexo,
-                                        txt_salario_mensual.Text,
-                                        txt_otros_desc.Text)
+                Dim modelotabdetapla As New ModeloTabdetapla()
+                modelotabdetapla.ActualizarRegistro(txt_cedula.Text, txt_empleado.Text, sexo, txt_salario_mensual.Text, txt_otros_desc.Text)
                 form_consultar.consultarRegistro()
                 form_consultar.Show()
                 Me.Close()

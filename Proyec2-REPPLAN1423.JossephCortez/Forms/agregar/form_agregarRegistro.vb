@@ -1,7 +1,7 @@
 ﻿Public Class form_agregarRegistro
 
     'VARRIABLES DE CONEXION Y  2 VARIABLES TEMPORALES
-    ReadOnly tabla As Tabdetapla = Tabdetapla.Instancia
+
     Dim condicion As Boolean = True
     Dim sexo As String
 
@@ -33,7 +33,8 @@
             condicion = False
         End If
 
-        If tabla.VerificarRegistro(txt_cedula.Text) Then
+        Dim modeloTabdetapla As New ModeloTabdetapla()
+        If modeloTabdetapla.VerificarRegistro(cedula) Then
             MsgBox("EL REGISTRO YA EXISTE", MsgBoxStyle.Information, "VERIFICAR")
             condicion = False
         Else
@@ -45,7 +46,7 @@
         If (condicion) Then
             Dim resp As Integer = MsgBox("¿Esta seguro que desea agregar el empleado" & vbCrLf & txt_empleado.Text & " con cedula: " & txt_cedula.Text & "?", MsgBoxStyle.YesNo)
             If (resp = MsgBoxResult.Yes) Then
-                tabla.AgregarRegistro(txt_cedula.Text,
+                modeloTabdetapla.AgregarRegistro(txt_cedula.Text,
                                      txt_empleado.Text,
                                      sexo,
                                      txt_salario_mensual.Text,

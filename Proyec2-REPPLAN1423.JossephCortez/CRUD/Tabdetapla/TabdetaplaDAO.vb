@@ -1,14 +1,9 @@
 ﻿Imports MySql.Data.MySqlClient
 
-Public Class Tabdetapla
+Public Class TabdetaplaDAO
     Inherits Conexion
 
-    Public Shared ReadOnly Property Instancia As Tabdetapla
-        Get
-            Static INST As Tabdetapla = New Tabdetapla()
-            Return INST
-        End Get
-    End Property
+
 
     Public Function VerificarRegistro(cedula As String) As Boolean
         Using Conexion = getConexion()
@@ -26,7 +21,7 @@ Public Class Tabdetapla
     End Function
 
 
-    Public Sub VerRegistros(datos As DataGridView)
+    Public Function VerRegistros(datos As DataGridView) As DataGridView
 
         Using Conexion = getConexion()
             Conexion.Open()
@@ -39,13 +34,16 @@ Public Class Tabdetapla
                 Dim da As MySqlDataAdapter = New MySqlDataAdapter(Sqlcomandos)
 
                 da.Fill(dt)
+
                 datos.DataSource = dt
+
+                Return datos
 
             End Using
 
         End Using
 
-    End Sub
+    End Function
 
 
     'MODULO PARA AGREGAR REGISTRO
@@ -131,20 +129,21 @@ Public Class Tabdetapla
         End Using
 
     End Sub
-    ReadOnly Property TotalRegistros As String
-        Get
-            Using Conexion = getConexion()
-                Conexion.Open()
-                Using Sqlcomandos = New MySqlCommand()
-                    Sqlcomandos.Connection = Conexion
-                    Sqlcomandos.CommandText = "Select Count(*) from tabdetapla"
-                    Dim total = Convert.ToString(Sqlcomandos.ExecuteScalar())
-                    Sqlcomandos.Dispose()
-                    Conexion.Dispose()
-                    Return total
-                End Using
+
+    Public Function TotalRegistros() As String
+
+        Using Conexion = getConexion()
+            Conexion.Open()
+            Using Sqlcomandos = New MySqlCommand()
+                Sqlcomandos.Connection = Conexion
+                Sqlcomandos.CommandText = "Select Count(*) from tabdetapla"
+                Dim total = Convert.ToString(Sqlcomandos.ExecuteScalar())
+                Sqlcomandos.Dispose()
+                Conexion.Dispose()
+                Return total
             End Using
-        End Get
-    End Property
+        End Using
+
+    End Function
 
 End Class
