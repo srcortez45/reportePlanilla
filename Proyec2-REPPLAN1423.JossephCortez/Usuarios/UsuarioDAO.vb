@@ -4,6 +4,7 @@ Imports MySql.Data.MySqlClient
 Public Class UsuarioDAO
     Inherits Conexion
 
+    'MODULO DE LOGIN 
     Public Function Login(user As String, pass As String) As Boolean
         Using conexion = getConexion()
             conexion.Open()

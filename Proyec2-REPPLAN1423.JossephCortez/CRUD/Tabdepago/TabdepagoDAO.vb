@@ -1,10 +1,11 @@
 ﻿
 Imports MySql.Data.MySqlClient
 
+'HEREDA LA CLASE CONEXION PARA LA DB
 Public Class TabdepagoDAO
     Inherits Conexion
 
-
+    'Verifica los registros de pago
     ReadOnly Property VerificarRegistroPago(cedula As String) As Boolean
         Get
             Using Conexion = getConexion()
@@ -52,6 +53,8 @@ Public Class TabdepagoDAO
         End Using
 
     End Sub
+
+    'MODULO PARA ACTUALIZAR LOS DATOS DE PAGO DEL EMPLEADO
     Public Sub ActualizarDatosPago(cedula As String, salario_quincenal As String, seg_social As String, seg_edu As String, imp_renta As String, monto_otros_desc As String, total_desc As String, salario_neto As String)
         Using Conexion = getConexion()
             Conexion.Open()
@@ -71,6 +74,7 @@ Public Class TabdepagoDAO
         End Using
     End Sub
 
+    'MODULO PARA ELIMINAR LOS DATOS DE PAGO DEL EMPLEADO
     Public Sub EliminarDatosPago(cedula As String)
         Using Conexion = getConexion()
             Conexion.Open()

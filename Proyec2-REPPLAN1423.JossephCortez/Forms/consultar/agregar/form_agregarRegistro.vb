@@ -1,31 +1,13 @@
-﻿Public Class form_actualizarRegistro
+﻿Public Class form_agregarRegistro
 
-    Dim sexo As String
+    'VARIABLES TEMPORALES
+
     Dim condicion As Boolean = True
+    Dim sexo As String
 
-    'MODULO PARA SOLICITAR LA INFO AL FORM DE CONSULTA
-    Public Sub DatosEmpleado(cedula As String, empleado As String, sexo As String, salario_mensual As String, otros_desc As String)
-        txt_cedula.Text = cedula
-        txt_empleado.Text = empleado
-        If (sexo.Contains("M")) Then
-            chbx_opcion2.Checked = False
-            chbx_opcion1.Checked = True
-            Me.sexo = "M"
-        Else
-            chbx_opcion1.Checked = False
-            chbx_opcion2.Checked = True
-            Me.sexo = "F"
-        End If
-        txt_salario_mensual.Text = salario_mensual
-        txt_otros_desc.Text = otros_desc
-
-    End Sub
-
-
-    Private Sub btn_actualizarRegistro_Click(sender As Object, e As EventArgs) Handles btn_actualizar.Click
+    Private Sub btn_registrar_Click(sender As Object, e As EventArgs) Handles btn_registrar.Click
 
         'SE VERIFICAN LOS ESPACIOS EN BLANCO
-
         If (txt_cedula.Text.Trim = "") Then
             MsgBox("EL CAMPO CEDULA ESTA VACIO", MsgBoxStyle.Information, "VERIFICAR")
             txt_cedula.Clear()
@@ -51,26 +33,41 @@
             condicion = False
         End If
 
+        'SE VERIFICA QUE EL REGISTRO EXISTA
 
-        'SI LA INFO ES VALIDA ACTUALIZA EL REGISTRO
+
+
+        'SI LA INFO ES VALIDA Y EL REGISTRO NO EXISTE, SE AGREGA
         If (condicion) Then
-            Dim resp As Integer = MsgBox("¿Esta seguro que desea actualizar el empleado" & vbCrLf & txt_empleado.Text & " con cedula: " & txt_cedula.Text & "?", MsgBoxStyle.YesNo)
-            If (resp = MsgBoxResult.Yes) Then
-                Dim modelotabdetapla As New ModeloTabdetapla()
-                modelotabdetapla.ActualizarRegistro(txt_cedula.Text, txt_empleado.Text, sexo, txt_salario_mensual.Text, txt_otros_desc.Text)
-                form_consultar.consultarRegistro()
-                form_consultar.Show()
-                Me.Close()
+            Dim modeloTabdetapla As New ModeloTabdetapla()
+            If modeloTabdetapla.VerificarRegistro(txt_cedula.Text) Then
+                MsgBox("EL REGISTRO YA EXISTE", MsgBoxStyle.Information, "VERIFICAR")
+            Else
+                Dim resp As Integer = MsgBox("¿Esta seguro que desea agregar el empleado" & vbCrLf & txt_empleado.Text & " con cedula: " & txt_cedula.Text & "?", MsgBoxStyle.YesNo)
+                If (resp = MsgBoxResult.Yes) Then
+                    ModeloTabdetapla.AgregarRegistro(txt_cedula.Text,
+                                         txt_empleado.Text,
+                                         sexo,
+                                         txt_salario_mensual.Text,
+                                         txt_otros_desc.Text)
+                    Me.Close()
+                    form_pagos.ConsultarRegistro()
+                    form_pagos.Show()
+                End If
             End If
         End If
 
     End Sub
 
+
     'REGRESAR AL FORM DE CONSULTA
     Private Sub btn_regresar_Click(sender As Object, e As EventArgs) Handles btn_regresar.Click
-        form_consultar.Show()
+        form_pagos.Show()
         Me.Close()
     End Sub
+
+
+
 
     'MODULO DE VALIDACION DE LA ENTRADA DE TEXTO
     Private Sub validarCedula(sender As Object, e As KeyPressEventArgs) Handles txt_cedula.KeyPress
@@ -121,6 +118,9 @@
         End If
 
     End Sub
+
+
+
 
 
 
@@ -193,6 +193,7 @@
 
     End Sub
 
+
     Private Sub info_otros_desc_MouseHover(sender As Object, e As EventArgs) Handles txt_otros_desc.MouseHover
         If txt_otros_desc.Focused Then
             lb_msgInfo.Text = "El descuento solo puede contener numeros y el punto"
@@ -204,4 +205,7 @@
         End If
     End Sub
 
+    Private Sub form_agregarRegistro_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        lb_msgInfo.Text = ""
+    End Sub
 End Class

@@ -1,26 +1,37 @@
 ﻿Imports MySql.Data.MySqlClient
 
+'HEREDA DE LA CLASE CONEXION
 Public Class TabdetaplaDAO
     Inherits Conexion
 
 
+    'VERIFICA EL REGISTRO 
+    ReadOnly Property VerificarRegistro(cedula As String) As Boolean
+        Get
 
-    Public Function VerificarRegistro(cedula As String) As Boolean
-        Using Conexion = getConexion()
-            Conexion.Open()
-            Using Sqlcomandos = New MySqlCommand()
-                Sqlcomandos.Connection = Conexion
-                Sqlcomandos.CommandText = "SELECT cedula from tabdetapla where cedula = @cedula"
-                Sqlcomandos.Parameters.AddWithValue("@cedula", cedula)
-                Dim lector = Sqlcomandos.ExecuteReader()
+            Using Conexion = getConexion()
+                Conexion.Open()
+                Using Sqlcomandos = New MySqlCommand()
+                    Sqlcomandos.Connection = Conexion
+                    Sqlcomandos.CommandText = "SELECT cedula from tabdetapla where cedula = @cedula"
+                    Sqlcomandos.Parameters.AddWithValue("@cedula", cedula)
+                    Dim lector = Sqlcomandos.ExecuteReader()
+                    While lector.Read()
+                        If cedula.Equals(lector.GetString(0)) Then
+                            VerificarRegistro = True
+                        Else
+                            VerificarRegistro = False
+                        End If
+                    End While
 
-                Return lector.HasRows
-
+                End Using
             End Using
-        End Using
-    End Function
+            Return VerificarRegistro
+        End Get
 
+    End Property
 
+    'RETORNA LOS REGISTROS DE EMPLEADOS
     Public Function VerRegistros(datos As DataGridView) As DataGridView
 
         Using Conexion = getConexion()
@@ -130,6 +141,7 @@ Public Class TabdetaplaDAO
 
     End Sub
 
+    'RETORNA EL TOTAL DE REGISTROS
     Public Function TotalRegistros() As String
 
         Using Conexion = getConexion()

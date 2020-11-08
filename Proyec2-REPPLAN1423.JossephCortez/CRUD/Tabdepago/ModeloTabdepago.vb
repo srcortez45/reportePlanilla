@@ -3,6 +3,8 @@
 
     ReadOnly TabdepagoDAO As New TabdepagoDAO()
 
+    'RETORNA LAS LAS FUNCIONES DE TABDEPAGODAO
+
     Public Function VerificarRegistroPago(cedula As String) As Boolean
         Return TabdepagoDAO.VerificarRegistroPago(cedula)
     End Function

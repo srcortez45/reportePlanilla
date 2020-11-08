@@ -18,12 +18,17 @@
         Dim resp = MsgBox("¿Esta seguro que desea eliminar el empleado" & vbCrLf & txt_empleado.Text & " con cedula: " & txt_cedula.Text & "?", MsgBoxStyle.YesNo)
 
         If resp = MsgBoxResult.Yes Then
+
+            ' SE ELIMINAN LOS DATOS DE PAGO ANTES DEL REGISTRO
             Dim eliminarPago As New ModeloTabdepago()
             eliminarPago.EliminarDatosPago(txt_cedula.Text)
+
+            ' SE ELIMINA EL REGISTRO
+
             Dim eliminarRegistro As New ModeloTabdetapla()
             eliminarRegistro.EliminarRegistro(txt_cedula.Text)
-            form_consultar.ConsultarRegistro()
-            form_consultar.Show()
+            form_pagos.ConsultarRegistro()
+            form_pagos.Show()
             Me.Close()
         End If
 
@@ -31,8 +36,9 @@
 
     'REGRESA AL FORM CONSULTA
     Private Sub btn_regresar_Click(sender As Object, e As EventArgs) Handles btn_regresar.Click
-        form_consultar.Show()
+        form_pagos.Show()
         Me.Close()
     End Sub
+
 
 End Class

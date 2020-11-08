@@ -1,19 +1,18 @@
 ﻿
-Public Class form_consultar
+Public Class form_pagos
 
     'VARIABLES TEMPORALES
     Dim cedula, empleado, sexo, salario_mensual, otros_desc As String
-
-
-    Private Sub CargarUsuario()
-        lb_usuario.Text = UsuariosActivos.cedula
-    End Sub
 
     'SE INICIAN LOS REGISTROS DE LA DB
     Private Sub form_consultar_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ConsultarRegistro()
         CargarUsuario()
 
+    End Sub
+    'CARGA EL USUARIO ACTUAL
+    Private Sub CargarUsuario()
+        lb_usuario.Text = UsuariosActivos.cedula
     End Sub
 
     'CONSULTAR LOS REGISTROS REGISTRADOS

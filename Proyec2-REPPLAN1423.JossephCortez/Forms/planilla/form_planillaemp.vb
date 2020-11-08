@@ -1,8 +1,14 @@
 ﻿
 Public Class form_planillaemp
+
+
+    'SE CREAN LOS MODELOS Y LA CLASE CALCULOS
+
     ReadOnly calculos As Calculos = Calculos.Instancia
     ReadOnly modelotabdetapla As New ModeloTabdetapla()
     ReadOnly modelotabdepago As New ModeloTabdepago()
+
+    'VARIABLES TEMPORALES
     Dim totalregistros As String
     Dim pos As Integer
 
@@ -32,7 +38,7 @@ Public Class form_planillaemp
         pos += 1
     End Sub
 
-    'MIENTRAS LA CONDICION SEA VERDADERA SE VOLVERA A MOSTRAR EL SIGUIENTE REGISTRO
+    'MIENTRAS NO SEA IGUAL, EXISTE OTRO REGISTRO
     Private Sub btn_aceptar_Click(sender As Object, e As EventArgs) Handles btn_aceptar.Click
 
         If pos = Integer.Parse(totalregistros) Then

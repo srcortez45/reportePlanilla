@@ -2,6 +2,8 @@
     ReadOnly tabdetaplaDAO As New TabdetaplaDAO()
 
 
+    'RETORNA LAS FUNCIONES DE LA CLASE TABDETAPLA
+
     Public Function VerificarRegistro(cedula As String) As Boolean
         Return tabdetaplaDAO.VerificarRegistro(cedula)
     End Function
