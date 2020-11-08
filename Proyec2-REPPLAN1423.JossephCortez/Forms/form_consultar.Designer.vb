@@ -4,7 +4,7 @@ Partial Class form_consultar
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
     <System.Diagnostics.DebuggerNonUserCode()>
-    Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+    Protected Overrides Sub Dispose( disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
                 components.Dispose()
@@ -34,6 +34,8 @@ Partial Class form_consultar
         Me.btn_planilla = New System.Windows.Forms.Button()
         Me.btn_cerrar = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.lb_usuario = New System.Windows.Forms.Label()
         CType(Me.dg_empleados, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btn_cerrar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -153,12 +155,32 @@ Partial Class form_consultar
         Me.Label1.TabIndex = 12
         Me.Label1.Text = "REGISTRO DE EMPLEADOS"
         '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(12, 26)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(46, 13)
+        Me.Label2.TabIndex = 13
+        Me.Label2.Text = "Usuario:"
+        '
+        'lb_usuario
+        '
+        Me.lb_usuario.AutoSize = True
+        Me.lb_usuario.Location = New System.Drawing.Point(64, 26)
+        Me.lb_usuario.Name = "lb_usuario"
+        Me.lb_usuario.Size = New System.Drawing.Size(39, 13)
+        Me.lb_usuario.TabIndex = 15
+        Me.lb_usuario.Text = "Label4"
+        '
         'form_consultar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Highlight
         Me.ClientSize = New System.Drawing.Size(900, 500)
+        Me.Controls.Add(Me.lb_usuario)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btn_cerrar)
         Me.Controls.Add(Me.btn_planilla)
@@ -184,4 +206,6 @@ Partial Class form_consultar
     Friend WithEvents btn_planilla As Button
     Friend WithEvents btn_cerrar As PictureBox
     Friend WithEvents Label1 As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents lb_usuario As Label
 End Class

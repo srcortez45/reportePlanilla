@@ -172,6 +172,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CRUD\conexion.vb" />
+    <Compile Include="CRUD\Tabdepago\Tabdepago.vb" />
+    <Compile Include="CRUD\Tabdetapla\Tabdetapla.vb" />
     <Compile Include="Forms\actualizar\form_actualizarRegistro.Designer.vb">
       <DependentUpon>form_actualizarRegistro.vb</DependentUpon>
     </Compile>
@@ -231,6 +233,10 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Calculos\calculos.vb" />
+    <Compile Include="Seguridad\SHA2.vb" />
+    <Compile Include="Usuarios\ModeloUsuario.vb" />
+    <Compile Include="Usuarios\UsuarioDAO.vb" />
+    <Compile Include="Usuarios\UsuariosActivos.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Forms\actualizar\form_actualizarRegistro.resx">
@@ -274,10 +280,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="CRUD\Tabpagoplan\" />
-    <Folder Include="CRUD\Tandetapla\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
