@@ -1,16 +1,19 @@
 ﻿Imports MySql.Data.MySqlClient
 Public Class form_consultar
-    'SE REALIZA LA CONEXION A LA INSTANCIA DE LA CLASE
 
     ReadOnly tabla As Tabdetapla = Tabdetapla.Instancia
     'VARIABLES TEMPORALES
     Dim cedula, empleado, sexo, salario_mensual, otros_desc As String
 
 
+    Private Sub cargarUsuario()
+        lb_usuario.Text = UsuariosActivos.cedula
+    End Sub
+
     'SE INICIAN LOS REGISTROS DE LA DB
     Private Sub form_consultar_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ConsultarRegistro()
-
+        cargarUsuario()
 
     End Sub
 

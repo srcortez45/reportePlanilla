@@ -4,7 +4,7 @@
     Dim condicion As Boolean = True
 
     'MODULO PARA SOLICITAR LA INFO AL FORM DE CONSULTA
-    Public Sub datosEmpleado(ByVal cedula As String, ByVal empleado As String, ByVal sexo As String, ByVal salario_mensual As String, ByVal otros_desc As String)
+    Public Sub DatosEmpleado(cedula As String, empleado As String, sexo As String, salario_mensual As String, otros_desc As String)
         txt_cedula.Text = cedula
         txt_empleado.Text = empleado
         If (sexo.Contains("M")) Then
@@ -49,6 +49,11 @@
             MsgBox("EL CAMPO OTROS DESCUENTOS ESTA VACIO", MsgBoxStyle.Information, "VERIFICAR")
             txt_otros_desc.Clear()
             condicion = False
+        End If
+
+        If tabla.VerificarRegistro(txt_cedula.Text) Then
+
+
         End If
 
         'SI LA INFO ES VALIDA ACTUALIZA EL REGISTRO

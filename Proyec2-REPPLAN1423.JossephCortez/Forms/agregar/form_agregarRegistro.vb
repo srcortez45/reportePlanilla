@@ -33,6 +33,13 @@
             condicion = False
         End If
 
+        If tabla.VerificarRegistro(txt_cedula.Text) Then
+            MsgBox("EL REGISTRO YA EXISTE", MsgBoxStyle.Information, "VERIFICAR")
+            condicion = False
+        Else
+            condicion = True
+        End If
+
 
         'SI LA INFO ES VALIDA AGREGA EL REGISTRO
         If (condicion) Then

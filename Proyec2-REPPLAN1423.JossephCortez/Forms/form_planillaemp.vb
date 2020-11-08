@@ -3,7 +3,6 @@ Public Class form_planillaemp
     ReadOnly calculos As Calculos = Calculos.Instancia
     ReadOnly tabla As Tabdetapla = Tabdetapla.Instancia
     ReadOnly pago As Tabdepago = Tabdepago.Instancia
-    Dim condicion As Boolean = True
     Dim totalregistros As String
     Dim pos As Integer
 
@@ -37,7 +36,6 @@ Public Class form_planillaemp
     Private Sub btn_aceptar_Click(sender As Object, e As EventArgs) Handles btn_aceptar.Click
 
         If pos = Integer.Parse(totalregistros) Then
-            condicion = False
             btn_aceptar.Visible = False
             Dim resp As Integer = MsgBox("¿Desea ver el resumen de la planilla?", MsgBoxStyle.YesNo, "INFORMACIÓN")
             If (resp = MsgBoxResult.Yes) Then
@@ -52,20 +50,16 @@ Public Class form_planillaemp
             Else
                 Me.Close()
             End If
-        End If
-
-        If condicion Then
+        Else
             Mostrar()
         End If
 
-        'SI LA POS ES IGUAL AL TOTAL DE REGISTROS SIGNIFICA QUE YA TODOS LOS REGISTROS FUERON LEIDOS
-        'Y SE PASA AL RESUMEN DE LA PLANILLA
+
 
 
 
     End Sub
 
-    'SE ENVIAN LOS DATOS DEL REGISTRO PARA REALIZAR LOS CALCULOS
     Private Sub CalcularPago()
 
         lb_salario_quincenal.Text = calculos.CalcularSalarioQuincenal(lb_salario_mensual.Text)
@@ -83,7 +77,7 @@ Public Class form_planillaemp
 
         lb_salario_neto.Text = calculos.CalcularSalarioNeto(lb_salario_quincenal.Text, lb_total_desc.Text)
 
-        'SE ENVIA EL SALARIO MENSUAL PARA REALIZAR EL DESGLOCE DEL DINERO
+
 
         calculos.DesgloseDinero(lb_salario_mensual.Text,
                                 txt_billetes50.Text,
@@ -103,6 +97,8 @@ Public Class form_planillaemp
         TotalPlanilla += lb_totaldesgloce.Text
         Max_Mix_Sal()
     End Sub
+
+
     'MODULO PARA CALCULAR EL MAYOR Y MENOR
     Private Sub Max_Mix_Sal()
 
@@ -134,7 +130,9 @@ Public Class form_planillaemp
 
     'MODULO PARA ENVIAR LOS DATOS DE PAGO AL REGISTRO
     Private Sub EnviarDatoPago()
-        pago.EnviarDatosPago(lb_cedula_emp.Text,
+        If pago.VerificarRegistroPago(lb_cedula_emp.Text) Then
+
+            pago.ActualizarDatosPago(lb_cedula_emp.Text,
                                  lb_salario_quincenal.Text,
                                  lb_seg_social.Text,
                                  lb_seg_edu.Text,
@@ -142,6 +140,18 @@ Public Class form_planillaemp
                                  lb_monto_otros_desc.Text,
                                  lb_total_desc.Text,
                                  lb_salario_neto.Text)
+        Else
+            pago.InsertarDatosPago(lb_cedula_emp.Text,
+                     lb_salario_quincenal.Text,
+                     lb_seg_social.Text,
+                     lb_seg_edu.Text,
+                     lb_monto_impRenta.Text,
+                     lb_monto_otros_desc.Text,
+                     lb_total_desc.Text,
+                     lb_salario_neto.Text)
+
+
+        End If
 
     End Sub
 

@@ -1,12 +1,7 @@
 ﻿
 Public Class form_login
-
-
-    Public Shared code As String
-    ReadOnly conexion As Conexion
     'SE CREA UNA INSTANCIA DE LA CLASE CONEXION PARA VERIFICAR EL USER Y EL PASS
-    Dim db As Conexion
-    Public Shared condicion As Boolean = True
+    Dim condicion As Boolean = True
 
     'SE VERIFICAN LOS CAMPOS EN BLANCO ANTES DE PERMITIR EL LOGIN
     Private Sub btn_logindb_Click(sender As Object, e As EventArgs) Handles btn_logindb.Click
@@ -20,17 +15,19 @@ Public Class form_login
             txt_user.Clear()
             condicion = False
         End If
-        If condicion Then
-            Try
-                db = New Conexion(txt_user.Text, txt_pass.Text)
-                form_consultar.Show()
-                Me.Close()
-            Catch ex As Exception
-                Debug.WriteLine(ex)
-                LimpiarCampos()
-            End Try
-        End If
 
+        If condicion Then
+            Dim modeloUsuario As New ModeloUsuario()
+            Dim validarLogin = modeloUsuario.Login(txt_user.Text, txt_pass.Text)
+            If validarLogin Then
+                form_consultar.Show()
+                Me.Hide()
+            Else
+                MsgBox("Usuario Incorrecto o contraseña incorrecta, porfavor intente nuevamente", MsgBoxStyle.Critical, "ADVERTENCIA")
+                txt_pass.Clear()
+                txt_pass.Focus()
+            End If
+        End If
 
     End Sub
 
@@ -41,12 +38,6 @@ Public Class form_login
         If (resp = MsgBoxResult.Ok) Then
             Me.Close()
         End If
-    End Sub
-
-    Public Sub LimpiarCampos()
-        MsgBox("EL USUARIO NO EXISTE, VUELVA A INTENTAR", MsgBoxStyle.Critical, "IMPORTANTE")
-        txt_user.Clear()
-        txt_pass.Clear()
     End Sub
 
 

@@ -23,13 +23,13 @@ Public Class Calculos
 
     'MODULOS PARA REALIZAR LOS DIFERENTES CALCULOS SOLICITADOS
 
-    Function CalcularSalarioQuincenal(ByVal salario_mensual As String) As String
+    Function CalcularSalarioQuincenal( salario_mensual As String) As String
 
         Return Redondear(salario_mensual / 2, 2)
     End Function
 
 
-    Function CalcularPorcImpRenta(ByVal sexo As String) As String
+    Function CalcularPorcImpRenta( sexo As String) As String
         If (sexo.Equals("M")) Then
             Return 0.1575
         Else
@@ -37,49 +37,49 @@ Public Class Calculos
         End If
     End Function
 
-    Function CalcularMontoImpRenta(ByVal salario_quincenal As String, ByVal PorcImpRenta As String) As String
+    Function CalcularMontoImpRenta( salario_quincenal As String,  PorcImpRenta As String) As String
         Return Redondear(salario_quincenal * PorcImpRenta, 2)
     End Function
 
 
-    Function CalcularMontoSegSocial(ByVal salario_quincenal As String) As String
+    Function CalcularMontoSegSocial( salario_quincenal As String) As String
         Return Redondear(salario_quincenal * 0.0925, 2)
     End Function
 
 
 
-    Function CalcularMontoSegEducativo(ByVal salario_quincenal As String) As String
+    Function CalcularMontoSegEducativo( salario_quincenal As String) As String
         Return Redondear(salario_quincenal * 0.0125, 2)
     End Function
 
 
 
-    Function CalcularMonto_OtrosDesc(ByVal salario_quincenal As String, ByVal otrosDesc As String) As String
+    Function CalcularMonto_OtrosDesc( salario_quincenal As String,  otrosDesc As String) As String
         Return Redondear(salario_quincenal * (otrosDesc / 100), 2)
     End Function
 
 
 
-    Function CalcularTotalDesc(ByVal ImpRenta As String, ByVal segSocial As String, ByVal segEduca As String, OtrosDesc As String) As String
+    Function CalcularTotalDesc( ImpRenta As String,  segSocial As String,  segEduca As String, OtrosDesc As String) As String
         Return Redondear(Val(ImpRenta) + Val(segSocial) + Val(segEduca) + Val((OtrosDesc / 100)), 2)
     End Function
 
 
-    Public Function CalcularSalarioNeto(ByVal salario_quincenal As String, ByVal totalDesc As String)
+    Public Function CalcularSalarioNeto( salario_quincenal As String,  totalDesc As String)
         Return Redondear(salario_quincenal - totalDesc, 2)
     End Function
 
 
 
     'MODULO PARA OBTENER EL EMP CON MAYO Y MENOR SALARIO
-    Public Sub MayorEmp(ByVal name As String, ByVal sal As String, ByRef sal_max As String, ByRef name_max As String)
+    Public Sub MayorEmp( name As String,  sal As String, ByRef sal_max As String, ByRef name_max As String)
         If sal > sal_max Then
             sal_max = sal
             name_max = name
         End If
     End Sub
 
-    Public Sub MenorEmp(ByVal name As String, ByVal sal As String, ByRef sal_min As String, ByRef name_min As String)
+    Public Sub MenorEmp( name As String,  sal As String, ByRef sal_min As String, ByRef name_min As String)
         If sal_min = 0 Then
             sal_min = sal
             name_min = name
@@ -91,7 +91,7 @@ Public Class Calculos
     End Sub
 
     'MODULO PARA REALIZAR EL DESGLOCE DE DINERO
-    Public Sub DesgloseDinero(ByVal monto As Double,
+    Public Sub DesgloseDinero( monto As Double,
                                ByRef txt_billetes50 As String,
                                ByRef txt_billetes20 As String,
                                ByRef txt_billetes10 As String,

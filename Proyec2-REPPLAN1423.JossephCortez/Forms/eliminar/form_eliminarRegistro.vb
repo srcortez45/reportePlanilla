@@ -1,8 +1,7 @@
 ﻿Public Class form_eliminarRegistro
-    ReadOnly tabla As Tabdetapla = Tabdetapla.Instancia
 
     'MODULO PARA SOLICITAR LA INFO AL FORM CONSULTA
-    Public Sub datosEmpleado(ByVal cedula As String, ByVal empleado As String, ByVal sexo As String, ByVal salario_mensual As String, ByVal otros_desc As String)
+    Public Sub datosEmpleado(cedula As String, empleado As String, sexo As String, salario_mensual As String, otros_desc As String)
         txt_cedula.Text = cedula
         txt_empleado.Text = empleado
         If (sexo.Contains("M")) Then
@@ -17,9 +16,13 @@
     'SE REALIZA LA VERIFICACIÓN PARA ELIMINAR EL EMP
     Private Sub btn_eliminar_Click(sender As Object, e As EventArgs) Handles btn_eliminar.Click
         Dim resp As Integer = MsgBox("¿Esta seguro que desea eliminar el empleado" & vbCrLf & txt_empleado.Text & " con cedula: " & txt_cedula.Text & "?", MsgBoxStyle.YesNo)
+
         If (resp = MsgBoxResult.Yes) Then
-            tabla.EliminarRegistro(txt_empleado.Text)
-            form_consultar.consultarRegistro()
+            Dim eliminarPago = Tabdepago.Instancia
+            eliminarPago.EliminarDatosPago(txt_cedula.Text)
+            Dim eliminarRegistro = Tabdetapla.Instancia
+            eliminarRegistro.EliminarRegistro(txt_cedula.Text)
+            form_consultar.ConsultarRegistro()
             form_consultar.Show()
             Me.Close()
         End If
