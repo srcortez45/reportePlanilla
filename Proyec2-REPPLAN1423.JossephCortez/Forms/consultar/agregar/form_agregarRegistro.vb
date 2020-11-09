@@ -51,8 +51,8 @@
                                          txt_salario_mensual.Text,
                                          txt_otros_desc.Text)
                     Me.Close()
-                    form_pagos.ConsultarRegistro()
-                    form_pagos.Show()
+                    form_consultar.ConsultarRegistro()
+                    form_consultar.Show()
                 End If
             End If
         End If
@@ -62,7 +62,7 @@
 
     'REGRESAR AL FORM DE CONSULTA
     Private Sub btn_regresar_Click(sender As Object, e As EventArgs) Handles btn_regresar.Click
-        form_pagos.Show()
+        form_consultar.Show()
         Me.Close()
     End Sub
 

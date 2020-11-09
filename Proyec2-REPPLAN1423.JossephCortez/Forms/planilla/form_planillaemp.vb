@@ -22,17 +22,40 @@ Public Class form_planillaemp
 
     Dim name_min_F, name_max_F, sal_min_F, sal_max_F As String
 
+    Private Sub btn_emp_regresar_Click(sender As Object, e As EventArgs) Handles btn_emp_regresar.Click
+        form_info_emp.Show()
+        Me.Close()
+    End Sub
+
     'SE VERIFICA EL TOTAL DE REGISTROS
+
+    Public Sub CargarEmpleado()
+        modelotabdetapla.TraerRegistro(cedula, True)
+        CalcularPago()
+        NormalizarSalida()
+        btn_aceptar.Visible = False
+    End Sub
+
     Private Sub form_planillaemp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        totalregistros = modelotabdetapla.TotalRegistros
-        Mostrar()
+        If tipo_usuario = tipo_usuarios.empleado Then
+            CargarEmpleado()
+        Else
+            totalregistros = modelotabdetapla.TotalRegistros
+            Mostrar()
+            btn_emp_regresar.Visible = False
+        End If
+
     End Sub
 
     'SE CARGA EL REGISTRO, SE REALIZAN LOS CALCULOS, SE ENVIAN LOS DATOS DE PAGO 
     'Y SE NORMALIZA LA SALIDA PARA QUE SE MUESTRE CORRECTAMENTE 
     Private Sub Mostrar()
-        modelotabdetapla.TraerRegistro(pos.ToString)
+        modelotabdetapla.PasarRegistro(pos.ToString)
         CalcularPago()
+
+        TotalPlanilla += lb_totaldesgloce.Text
+        Max_Mix_Sal()
+
         EnviarDatoPago()
         NormalizarSalida()
         pos += 1
@@ -43,8 +66,8 @@ Public Class form_planillaemp
 
         If pos = Integer.Parse(totalregistros) Then
             btn_aceptar.Visible = False
-            Dim resp As Integer = MsgBox("¿Desea ver el resumen de la planilla?", MsgBoxStyle.YesNo, "INFORMACIÓN")
-            If (resp = MsgBoxResult.Yes) Then
+            Dim resp = MsgBox("¿Desea ver el resumen de la planilla?", MsgBoxStyle.YesNo, "INFORMACIÓN")
+            If resp = MsgBoxResult.Yes Then
                 form_resumenplan.EnviarMontoPlanilla(TotalPlanilla)
 
                 form_resumenplan.AsignarResultados_Sal_neto(name_min, name_max, sal_min, sal_max)
@@ -54,6 +77,7 @@ Public Class form_planillaemp
                 form_resumenplan.Show()
                 Me.Close()
             Else
+                form_consultar.Show()
                 Me.Close()
             End If
         Else
@@ -100,9 +124,9 @@ Public Class form_planillaemp
                                 lb_totalmonedas.Text,
                                 lb_totaldesgloce.Text)
 
-        TotalPlanilla += lb_totaldesgloce.Text
-        Max_Mix_Sal()
+
     End Sub
+
 
 
     'MODULO PARA CALCULAR EL MAYOR Y MENOR

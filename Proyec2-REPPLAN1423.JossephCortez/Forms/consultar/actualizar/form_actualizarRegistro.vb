@@ -54,13 +54,13 @@
 
 
         'SI LA INFO ES VALIDA ACTUALIZA EL REGISTRO
-        If (condicion) Then
+        If condicion Then
             Dim resp As Integer = MsgBox("¿Esta seguro que desea actualizar el empleado" & vbCrLf & txt_empleado.Text & " con cedula: " & txt_cedula.Text & "?", MsgBoxStyle.YesNo)
             If (resp = MsgBoxResult.Yes) Then
                 Dim modelotabdetapla As New ModeloTabdetapla()
                 modelotabdetapla.ActualizarRegistro(txt_cedula.Text, txt_empleado.Text, sexo, txt_salario_mensual.Text, txt_otros_desc.Text)
-                form_pagos.ConsultarRegistro()
-                form_pagos.Show()
+                form_consultar.ConsultarRegistro()
+                form_consultar.Show()
                 Me.Close()
             End If
         End If
@@ -69,7 +69,7 @@
 
     'REGRESAR AL FORM DE CONSULTA
     Private Sub btn_regresar_Click(sender As Object, e As EventArgs) Handles btn_regresar.Click
-        form_pagos.Show()
+        form_consultar.Show()
         Me.Close()
     End Sub
 
@@ -207,5 +207,9 @@
 
     Private Sub form_actualizarRegistro_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         lb_msgInfo.Text = ""
+        If tipo_usuario = tipo_usuarios.empleado Then
+            txt_otros_desc.Enabled = False
+            txt_salario_mensual.Enabled = False
+        End If
     End Sub
 End Class

@@ -194,16 +194,28 @@
     <Compile Include="Forms\consultar\eliminar\form_eliminarRegistro.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\consultar\form_consultar.Designer.vb">
-      <DependentUpon>form_consultar.vb</DependentUpon>
+    <Compile Include="Forms\consultar\form_consulta.Designer.vb">
+      <DependentUpon>form_consulta.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\consultar\form_consultar.vb">
+    <Compile Include="Forms\consultar\form_consulta.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\empleado\form_info_emp.Designer.vb">
+      <DependentUpon>form_info_emp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\empleado\form_info_emp.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\login\form_login.Designer.vb">
       <DependentUpon>form_login.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\login\form_login.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\pago\form_pago.Designer.vb">
+      <DependentUpon>form_pago.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\pago\form_pago.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\planilla\form_planillaemp.Designer.vb">
@@ -235,6 +247,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Calculos\calculos.vb" />
+    <Compile Include="Permisos\permisos.vb" />
     <Compile Include="Seguridad\SHA2.vb" />
     <Compile Include="Usuarios\ModeloUsuario.vb" />
     <Compile Include="Usuarios\UsuarioDAO.vb" />
@@ -250,11 +263,17 @@
     <EmbeddedResource Include="Forms\consultar\eliminar\form_eliminarRegistro.resx">
       <DependentUpon>form_eliminarRegistro.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\consultar\form_consultar.resx">
-      <DependentUpon>form_consultar.vb</DependentUpon>
+    <EmbeddedResource Include="Forms\consultar\form_consulta.resx">
+      <DependentUpon>form_consulta.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\empleado\form_info_emp.resx">
+      <DependentUpon>form_info_emp.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\login\form_login.resx">
       <DependentUpon>form_login.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\pago\form_pago.resx">
+      <DependentUpon>form_pago.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\planilla\form_planillaemp.resx">
       <DependentUpon>form_planillaemp.vb</DependentUpon>
@@ -282,9 +301,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Forms\pagos\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>

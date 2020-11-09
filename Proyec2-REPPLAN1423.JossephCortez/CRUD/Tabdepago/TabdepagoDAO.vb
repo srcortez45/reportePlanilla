@@ -5,6 +5,39 @@ Imports MySql.Data.MySqlClient
 Public Class TabdepagoDAO
     Inherits Conexion
 
+    'RETORNA LOS REGISTROS DE EMPLEADOS
+    Public Function VerPagos(datos As DataGridView) As DataGridView
+
+        Using Conexion = getConexion()
+            Conexion.Open()
+            Using Sqlcomandos = New MySqlCommand()
+
+                Sqlcomandos.Connection = Conexion
+                Sqlcomandos.CommandText = "Select * FROM tabdepago ORDER BY CEDULA asc"
+
+                Dim dt As DataTable = New DataTable
+                Dim da As MySqlDataAdapter = New MySqlDataAdapter(Sqlcomandos)
+
+                da.Fill(dt)
+                dt.Columns.Item(0).ColumnName = "Cédula"
+                dt.Columns.Item(1).ColumnName = "Salario Quincenal"
+                dt.Columns.Item(2).ColumnName = "Seg. Social"
+                dt.Columns.Item(3).ColumnName = "Seg. Educativo"
+                dt.Columns.Item(4).ColumnName = "Imp. Renta"
+                dt.Columns.Item(5).ColumnName = "Otros Desc."
+                dt.Columns.Item(6).ColumnName = "Total Desc."
+                dt.Columns.Item(7).ColumnName = "Salario Neto"
+                datos.DataSource = dt
+
+                Return datos
+
+            End Using
+
+        End Using
+
+    End Function
+
+
     'Verifica los registros de pago
     ReadOnly Property VerificarRegistroPago(cedula As String) As Boolean
         Get

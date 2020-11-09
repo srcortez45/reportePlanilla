@@ -4,9 +4,15 @@
 
     'RETORNA LAS FUNCIONES DE LA CLASE TABDETAPLA
 
+
+
     Public Function VerificarRegistro(cedula As String) As Boolean
         Return tabdetaplaDAO.VerificarRegistro(cedula)
     End Function
+
+    Public Sub TraerRegistro(cedula As String, Optional ByVal condicion As Boolean = True)
+        tabdetaplaDAO.TraerRegistro(cedula, condicion)
+    End Sub
 
     Public Function VerRegistros(datos As DataGridView) As DataGridView
         Return tabdetaplaDAO.VerRegistros(datos)
@@ -24,8 +30,8 @@
         tabdetaplaDAO.ActualizarRegistro(cedula, empleado, sexo, salario_mensual, otros_desc)
     End Sub
 
-    Public Sub TraerRegistro(pos As String)
-        tabdetaplaDAO.TraerRegistro(pos)
+    Public Sub PasarRegistro(pos As String)
+        tabdetaplaDAO.PasarRegistro(pos)
     End Sub
 
     ReadOnly Property TotalRegistros()

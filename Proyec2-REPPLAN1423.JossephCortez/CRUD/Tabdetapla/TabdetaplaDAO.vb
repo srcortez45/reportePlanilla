@@ -39,12 +39,17 @@ Public Class TabdetaplaDAO
             Using Sqlcomandos = New MySqlCommand()
 
                 Sqlcomandos.Connection = Conexion
-                Sqlcomandos.CommandText = "Select * FROM tabdetapla"
+                Sqlcomandos.CommandText = "Select * FROM tabdetapla ORDER BY CEDULA ASC"
 
                 Dim dt As DataTable = New DataTable
                 Dim da As MySqlDataAdapter = New MySqlDataAdapter(Sqlcomandos)
 
                 da.Fill(dt)
+                dt.Columns.Item(0).ColumnName = "Cédula"
+                dt.Columns.Item(1).ColumnName = "Empleado"
+                dt.Columns.Item(2).ColumnName = "Sexo"
+                dt.Columns.Item(3).ColumnName = "Salario Mensual"
+                dt.Columns.Item(4).ColumnName = "Otros Desc."
 
                 datos.DataSource = dt
 
@@ -55,6 +60,38 @@ Public Class TabdetaplaDAO
         End Using
 
     End Function
+
+    Public Sub TraerRegistro(cedula As String, Optional ByVal condicion As Boolean = True)
+        Using Conexion = getConexion()
+            Conexion.Open()
+            Using Sqlcomandos = New MySqlCommand()
+                Sqlcomandos.Connection = Conexion
+                Sqlcomandos.CommandText = "SELECT * FROM tabdetapla WHERE cedula = @cedula"
+                Sqlcomandos.Parameters.AddWithValue("@cedula", cedula)
+                Dim lector = Sqlcomandos.ExecuteReader()
+                While lector.Read()
+
+                    form_info_emp.lb_cedula.Text = lector.GetString(0)
+                    form_info_emp.lb_empleado.Text = lector.GetString(1)
+                    form_info_emp.lb_sexo.Text = lector.GetChar(2)
+                    form_info_emp.lb_posicion.Text = tipo_usuario
+                    form_info_emp.lb_salario_mensual.Text = lector.GetDecimal(3)
+                    form_info_emp.lb_otros_desc.Text = lector.GetDecimal(4)
+
+                    If condicion Then
+
+                        form_planillaemp.lb_cedula_emp.Text = lector.GetString(0)
+                        form_planillaemp.lb_empleado.Text = lector.GetString(1)
+                        form_planillaemp.lb_firma_emp.Text = lector.GetString(1)
+                        form_planillaemp.lb_sexo.Text = lector.GetChar(2)
+                        form_planillaemp.lb_salario_mensual.Text = lector.GetDecimal(3)
+                        form_planillaemp.lb_porc_otros_desc.Text = lector.GetDecimal(4)
+
+                    End If
+                End While
+            End Using
+        End Using
+    End Sub
 
 
     'MODULO PARA AGREGAR REGISTRO
@@ -74,6 +111,7 @@ Public Class TabdetaplaDAO
             End Using
 
         End Using
+        MsgBox("EL REGISTRO SE AÑADIO", MsgBoxStyle.OkOnly, "INFORMACIÓN DE DATOS")
     End Sub
 
 
@@ -117,7 +155,7 @@ Public Class TabdetaplaDAO
 
 
     'MODULO PARA TRAER REGISTRO
-    Public Sub TraerRegistro(pos As String)
+    Public Sub PasarRegistro(pos As String)
 
         Using Conexion = getConexion()
             Conexion.Open()
@@ -129,7 +167,7 @@ Public Class TabdetaplaDAO
                     form_planillaemp.lb_cedula_emp.Text = lector.GetString(0)
                     form_planillaemp.lb_empleado.Text = lector.GetString(1)
                     form_planillaemp.lb_firma_emp.Text = lector.GetString(1)
-                    form_planillaemp.lb_sexo.Text = lector.GetString(2)
+                    form_planillaemp.lb_sexo.Text = lector.GetChar(2)
                     form_planillaemp.lb_salario_mensual.Text = lector.GetDecimal(3)
                     form_planillaemp.lb_porc_otros_desc.Text = lector.GetDecimal(4)
                 End While
@@ -140,6 +178,8 @@ Public Class TabdetaplaDAO
         End Using
 
     End Sub
+
+
 
     'RETORNA EL TOTAL DE REGISTROS
     Public Function TotalRegistros() As String

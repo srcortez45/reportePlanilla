@@ -27,8 +27,8 @@
 
             Dim eliminarRegistro As New ModeloTabdetapla()
             eliminarRegistro.EliminarRegistro(txt_cedula.Text)
-            form_pagos.ConsultarRegistro()
-            form_pagos.Show()
+            form_consultar.ConsultarRegistro()
+            form_consultar.Show()
             Me.Close()
         End If
 
@@ -36,7 +36,7 @@
 
     'REGRESA AL FORM CONSULTA
     Private Sub btn_regresar_Click(sender As Object, e As EventArgs) Handles btn_regresar.Click
-        form_pagos.Show()
+        form_consultar.Show()
         Me.Close()
     End Sub
 

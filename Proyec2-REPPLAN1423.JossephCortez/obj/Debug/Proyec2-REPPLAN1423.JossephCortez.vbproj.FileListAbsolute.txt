@@ -107,4 +107,6 @@ C:\Users\yepin\Desktop\Proyect2-software8\Proyec2-REPPLAN1423.JossephCortez\Proy
 C:\Users\yepin\Desktop\Proyect2-software8\Proyec2-REPPLAN1423.JossephCortez\Proyec2-REPPLAN1423.JossephCortez\bin\Debug\itext.sign.xml
 C:\Users\yepin\Desktop\Proyect2-software8\Proyec2-REPPLAN1423.JossephCortez\Proyec2-REPPLAN1423.JossephCortez\bin\Debug\itext.styledxmlparser.xml
 C:\Users\yepin\Desktop\Proyect2-software8\Proyec2-REPPLAN1423.JossephCortez\Proyec2-REPPLAN1423.JossephCortez\bin\Debug\itext.svg.xml
-C:\Users\yepin\Desktop\Proyect2-software8\Proyec2-REPPLAN1423.JossephCortez\Proyec2-REPPLAN1423.JossephCortez\obj\Debug\Proyec2_REPPLAN1423.JossephCortez.form_pagos.resources
+C:\Users\yepin\Desktop\Proyect2-software8\Proyec2-REPPLAN1423.JossephCortez\Proyec2-REPPLAN1423.JossephCortez\obj\Debug\Proyec2_REPPLAN1423.JossephCortez.form_pago.resources
+C:\Users\yepin\Desktop\Proyect2-software8\Proyec2-REPPLAN1423.JossephCortez\Proyec2-REPPLAN1423.JossephCortez\obj\Debug\Proyec2_REPPLAN1423.JossephCortez.form_consultar.resources
+C:\Users\yepin\Desktop\Proyect2-software8\Proyec2-REPPLAN1423.JossephCortez\Proyec2-REPPLAN1423.JossephCortez\obj\Debug\Proyec2_REPPLAN1423.JossephCortez.form_info_emp.resources

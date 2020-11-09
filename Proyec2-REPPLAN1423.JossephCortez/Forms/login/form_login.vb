@@ -22,8 +22,15 @@ Public Class form_login
             Dim modeloUsuario As New ModeloUsuario()
             Dim validarLogin = modeloUsuario.Login(txt_user.Text, txt_pass.Text)
             If validarLogin Then
-                form_pagos.Show()
-                Me.Close()
+                If tipo_usuario = tipo_usuarios.empleado Then
+                    form_info_emp.Show()
+                    Me.Close()
+                Else
+                    form_consultar.Show()
+                    Me.Close()
+                End If
+
+
             Else
                 MsgBox("Usuario Incorrecto o contraseña incorrecta" & vbCrLf & "Por favor intente nuevamente", MsgBoxStyle.Critical, "ADVERTENCIA")
                 txt_pass.Clear()

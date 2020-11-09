@@ -4,6 +4,9 @@
     ReadOnly TabdepagoDAO As New TabdepagoDAO()
 
     'RETORNA LAS LAS FUNCIONES DE TABDEPAGODAO
+    Public Function VerPagos(datos As DataGridView)
+        Return TabdepagoDAO.VerPagos(datos)
+    End Function
 
     Public Function VerificarRegistroPago(cedula As String) As Boolean
         Return TabdepagoDAO.VerificarRegistroPago(cedula)
