@@ -1,16 +1,44 @@
 ﻿
 Imports MySql.Data.MySqlClient
 
-Public Class Tabdepago
+'HEREDA LA CLASE CONEXION PARA LA DB
+Public Class TabdepagoDAO
     Inherits Conexion
 
-    Public Shared ReadOnly Property Instancia As Tabdepago
-        Get
-            Static INST As Tabdepago = New Tabdepago()
-            Return INST
-        End Get
-    End Property
+    'RETORNA LOS REGISTROS DE EMPLEADOS
+    Public Function VerPagos(datos As DataGridView) As DataGridView
 
+        Using Conexion = getConexion()
+            Conexion.Open()
+            Using Sqlcomandos = New MySqlCommand()
+
+                Sqlcomandos.Connection = Conexion
+                Sqlcomandos.CommandText = "Select * FROM tabdepago ORDER BY CEDULA asc"
+
+                Dim dt As DataTable = New DataTable
+                Dim da As MySqlDataAdapter = New MySqlDataAdapter(Sqlcomandos)
+
+                da.Fill(dt)
+                dt.Columns.Item(0).ColumnName = "Cédula"
+                dt.Columns.Item(1).ColumnName = "Salario Quincenal"
+                dt.Columns.Item(2).ColumnName = "Seg. Social"
+                dt.Columns.Item(3).ColumnName = "Seg. Educativo"
+                dt.Columns.Item(4).ColumnName = "Imp. Renta"
+                dt.Columns.Item(5).ColumnName = "Otros Desc."
+                dt.Columns.Item(6).ColumnName = "Total Desc."
+                dt.Columns.Item(7).ColumnName = "Salario Neto"
+                datos.DataSource = dt
+
+                Return datos
+
+            End Using
+
+        End Using
+
+    End Function
+
+
+    'Verifica los registros de pago
     ReadOnly Property VerificarRegistroPago(cedula As String) As Boolean
         Get
             Using Conexion = getConexion()
@@ -58,6 +86,8 @@ Public Class Tabdepago
         End Using
 
     End Sub
+
+    'MODULO PARA ACTUALIZAR LOS DATOS DE PAGO DEL EMPLEADO
     Public Sub ActualizarDatosPago(cedula As String, salario_quincenal As String, seg_social As String, seg_edu As String, imp_renta As String, monto_otros_desc As String, total_desc As String, salario_neto As String)
         Using Conexion = getConexion()
             Conexion.Open()
@@ -77,6 +107,7 @@ Public Class Tabdepago
         End Using
     End Sub
 
+    'MODULO PARA ELIMINAR LOS DATOS DE PAGO DEL EMPLEADO
     Public Sub EliminarDatosPago(cedula As String)
         Using Conexion = getConexion()
             Conexion.Open()

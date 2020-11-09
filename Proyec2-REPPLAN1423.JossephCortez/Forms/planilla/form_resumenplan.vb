@@ -59,8 +59,8 @@ Public Class form_resumenplan
 
     'SE FINALIZA LA EJECUCIÓN DEL PROGRAMA
     Private Sub btn_aceptar_Click(sender As Object, e As EventArgs) Handles btn_aceptar.Click
-        MsgBox("Gracias por utilizar nuestro software", MsgBoxStyle.OkOnly, "INFORMACIÓN")
-        End
+        form_pago.Show()
+        Me.Close()
     End Sub
 
 End Class

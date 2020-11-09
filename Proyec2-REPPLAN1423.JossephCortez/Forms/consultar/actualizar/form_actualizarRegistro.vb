@@ -1,5 +1,6 @@
 ﻿Public Class form_actualizarRegistro
-    ReadOnly tabla As Tabdetapla = Tabdetapla.Instancia
+    'VARIABLES TEMPORALES
+
     Dim sexo As String
     Dim condicion As Boolean = True
 
@@ -51,21 +52,14 @@
             condicion = False
         End If
 
-        If tabla.VerificarRegistro(txt_cedula.Text) Then
-
-
-        End If
 
         'SI LA INFO ES VALIDA ACTUALIZA EL REGISTRO
-        If (condicion) Then
+        If condicion Then
             Dim resp As Integer = MsgBox("¿Esta seguro que desea actualizar el empleado" & vbCrLf & txt_empleado.Text & " con cedula: " & txt_cedula.Text & "?", MsgBoxStyle.YesNo)
             If (resp = MsgBoxResult.Yes) Then
-                tabla.ActualizarRegistro(txt_cedula.Text,
-                                        txt_empleado.Text,
-                                        sexo,
-                                        txt_salario_mensual.Text,
-                                        txt_otros_desc.Text)
-                form_consultar.consultarRegistro()
+                Dim modelotabdetapla As New ModeloTabdetapla()
+                modelotabdetapla.ActualizarRegistro(txt_cedula.Text, txt_empleado.Text, sexo, txt_salario_mensual.Text, txt_otros_desc.Text)
+                form_consultar.ConsultarRegistro()
                 form_consultar.Show()
                 Me.Close()
             End If
@@ -80,7 +74,7 @@
     End Sub
 
     'MODULO DE VALIDACION DE LA ENTRADA DE TEXTO
-    Private Sub validarCedula(sender As Object, e As KeyPressEventArgs) Handles txt_cedula.KeyPress
+    Private Sub ValidarCedula(sender As Object, e As KeyPressEventArgs) Handles txt_cedula.KeyPress
         If (Char.IsControl(e.KeyChar) = False) Then
             If (Char.IsDigit(e.KeyChar)) Or Asc(e.KeyChar) = 45 Then
             Else
@@ -211,4 +205,11 @@
         End If
     End Sub
 
+    Private Sub form_actualizarRegistro_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        lb_msgInfo.Text = ""
+        If tipo_usuario = tipo_usuarios.empleado Then
+            txt_otros_desc.Enabled = False
+            txt_salario_mensual.Enabled = False
+        End If
+    End Sub
 End Class

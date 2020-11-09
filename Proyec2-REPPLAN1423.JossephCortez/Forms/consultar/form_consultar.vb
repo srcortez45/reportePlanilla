@@ -1,25 +1,25 @@
-﻿Imports MySql.Data.MySqlClient
-Public Class form_consultar
+﻿
+Public Class form_pagos
 
-    ReadOnly tabla As Tabdetapla = Tabdetapla.Instancia
     'VARIABLES TEMPORALES
     Dim cedula, empleado, sexo, salario_mensual, otros_desc As String
-
-
-    Private Sub cargarUsuario()
-        lb_usuario.Text = UsuariosActivos.cedula
-    End Sub
 
     'SE INICIAN LOS REGISTROS DE LA DB
     Private Sub form_consultar_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ConsultarRegistro()
-        cargarUsuario()
+        CargarUsuario()
 
+    End Sub
+    'CARGA EL USUARIO ACTUAL
+    Private Sub CargarUsuario()
+        lb_usuario.Text = UsuariosActivos.cedula
     End Sub
 
     'CONSULTAR LOS REGISTROS REGISTRADOS
     Public Sub ConsultarRegistro()
-        tabla.VerRegistros(dg_empleados)
+        Dim modeloRegistros As New ModeloTabdetapla()
+        dg_empleados = modeloRegistros.VerRegistros(dg_empleados)
+
     End Sub
 
     'MODULO PARA AGREGAR UN REGISTRO
@@ -49,7 +49,7 @@ Public Class form_consultar
     End Sub
 
     'MODULO PARA SELECCIONAR LOS DATOS EN EL DGV PARA ENVIARLOS DEPENDIENDO DE LA ACCIÓN SE QUIERA REALIZAR
-    Private Sub seleccionarDatosEmp()
+    Private Sub SeleccionarDatosEmp()
         cedula = dg_empleados.CurrentRow.Cells(0).Value.ToString
         empleado = dg_empleados.CurrentRow.Cells(1).Value.ToString
         sexo = dg_empleados.CurrentRow.Cells(2).Value.ToString
@@ -65,8 +65,8 @@ Public Class form_consultar
 
     'MODULO PARA CERRAR LA SESIÓN DE USUARIO LUEGO DE CONFIRMAR 
     Private Sub btn_cerrar_Click(sender As Object, e As EventArgs) Handles btn_cerrar.Click
-        Dim resp = MsgBox("¿Desea cerrar sesión?", MsgBoxStyle.YesNo)
-        If (resp = MsgBoxResult.Yes) Then
+        Dim resp = MsgBox("¿Desea cerrar sesión?", MsgBoxStyle.YesNo, "CONFIRMACIÓN")
+        If resp = MsgBoxResult.Yes Then
             form_login.Show()
             Me.Close()
         End If

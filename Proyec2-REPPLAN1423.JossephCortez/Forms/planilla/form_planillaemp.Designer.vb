@@ -95,6 +95,7 @@ Partial Class form_planillaemp
         Me.Label55 = New System.Windows.Forms.Label()
         Me.lb_cedula_emp = New System.Windows.Forms.Label()
         Me.btn_aceptar = New System.Windows.Forms.Button()
+        Me.btn_emp_regresar = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -841,11 +842,22 @@ Partial Class form_planillaemp
         Me.btn_aceptar.Text = "Aceptar"
         Me.btn_aceptar.UseVisualStyleBackColor = True
         '
+        'btn_emp_regresar
+        '
+        Me.btn_emp_regresar.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_emp_regresar.Location = New System.Drawing.Point(433, 682)
+        Me.btn_emp_regresar.Name = "btn_emp_regresar"
+        Me.btn_emp_regresar.Size = New System.Drawing.Size(147, 36)
+        Me.btn_emp_regresar.TabIndex = 40
+        Me.btn_emp_regresar.Text = "Aceptar"
+        Me.btn_emp_regresar.UseVisualStyleBackColor = True
+        '
         'form_planillaemp
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1000, 730)
+        Me.Controls.Add(Me.btn_emp_regresar)
         Me.Controls.Add(Me.btn_aceptar)
         Me.Controls.Add(Me.lb_cedula_emp)
         Me.Controls.Add(Me.Label55)
@@ -950,4 +962,5 @@ Partial Class form_planillaemp
     Friend WithEvents lb_totaldesgloce As Label
     Friend WithEvents Label33 As Label
     Friend WithEvents btn_aceptar As Button
+    Friend WithEvents btn_emp_regresar As Button
 End Class

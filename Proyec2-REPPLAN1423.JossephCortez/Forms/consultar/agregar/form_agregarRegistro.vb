@@ -1,7 +1,7 @@
 ﻿Public Class form_agregarRegistro
 
-    'VARRIABLES DE CONEXION Y  2 VARIABLES TEMPORALES
-    ReadOnly tabla As Tabdetapla = Tabdetapla.Instancia
+    'VARIABLES TEMPORALES
+
     Dim condicion As Boolean = True
     Dim sexo As String
 
@@ -33,26 +33,27 @@
             condicion = False
         End If
 
-        If tabla.VerificarRegistro(txt_cedula.Text) Then
-            MsgBox("EL REGISTRO YA EXISTE", MsgBoxStyle.Information, "VERIFICAR")
-            condicion = False
-        Else
-            condicion = True
-        End If
+        'SE VERIFICA QUE EL REGISTRO EXISTA
 
 
-        'SI LA INFO ES VALIDA AGREGA EL REGISTRO
+
+        'SI LA INFO ES VALIDA Y EL REGISTRO NO EXISTE, SE AGREGA
         If (condicion) Then
-            Dim resp As Integer = MsgBox("¿Esta seguro que desea agregar el empleado" & vbCrLf & txt_empleado.Text & " con cedula: " & txt_cedula.Text & "?", MsgBoxStyle.YesNo)
-            If (resp = MsgBoxResult.Yes) Then
-                tabla.AgregarRegistro(txt_cedula.Text,
-                                     txt_empleado.Text,
-                                     sexo,
-                                     txt_salario_mensual.Text,
-                                     txt_otros_desc.Text)
-                Me.Close()
-                form_consultar.ConsultarRegistro()
-                form_consultar.Show()
+            Dim modeloTabdetapla As New ModeloTabdetapla()
+            If modeloTabdetapla.VerificarRegistro(txt_cedula.Text) Then
+                MsgBox("EL REGISTRO YA EXISTE", MsgBoxStyle.Information, "VERIFICAR")
+            Else
+                Dim resp As Integer = MsgBox("¿Esta seguro que desea agregar el empleado" & vbCrLf & txt_empleado.Text & " con cedula: " & txt_cedula.Text & "?", MsgBoxStyle.YesNo)
+                If (resp = MsgBoxResult.Yes) Then
+                    ModeloTabdetapla.AgregarRegistro(txt_cedula.Text,
+                                         txt_empleado.Text,
+                                         sexo,
+                                         txt_salario_mensual.Text,
+                                         txt_otros_desc.Text)
+                    Me.Close()
+                    form_consultar.ConsultarRegistro()
+                    form_consultar.Show()
+                End If
             End If
         End If
 
@@ -204,5 +205,7 @@
         End If
     End Sub
 
-
+    Private Sub form_agregarRegistro_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        lb_msgInfo.Text = ""
+    End Sub
 End Class

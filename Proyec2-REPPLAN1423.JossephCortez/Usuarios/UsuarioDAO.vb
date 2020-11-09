@@ -4,6 +4,7 @@ Imports MySql.Data.MySqlClient
 Public Class UsuarioDAO
     Inherits Conexion
 
+    'MODULO DE LOGIN 
     Public Function Login(user As String, pass As String) As Boolean
         Using conexion = getConexion()
             conexion.Open()
@@ -19,7 +20,8 @@ Public Class UsuarioDAO
                 If lector.HasRows Then
                     While lector.Read()
                         cedula = lector.GetString(0)
-                        UsuariosActivos.pass = lector.GetString(1)
+                        tipo_usuario = lector.GetString(2)
+
                     End While
                     lector.Dispose()
                     Return True

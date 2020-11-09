@@ -172,48 +172,62 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CRUD\conexion.vb" />
-    <Compile Include="CRUD\Tabdepago\Tabdepago.vb" />
-    <Compile Include="CRUD\Tabdetapla\Tabdetapla.vb" />
-    <Compile Include="Forms\actualizar\form_actualizarRegistro.Designer.vb">
+    <Compile Include="CRUD\Tabdepago\ModeloTabdepago.vb" />
+    <Compile Include="CRUD\Tabdepago\TabdepagoDAO.vb" />
+    <Compile Include="CRUD\Tabdetapla\ModeloTabdetapla.vb" />
+    <Compile Include="CRUD\Tabdetapla\TabdetaplaDAO.vb" />
+    <Compile Include="Forms\consultar\actualizar\form_actualizarRegistro.Designer.vb">
       <DependentUpon>form_actualizarRegistro.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\actualizar\form_actualizarRegistro.vb">
+    <Compile Include="Forms\consultar\actualizar\form_actualizarRegistro.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\agregar\form_agregarRegistro.Designer.vb">
+    <Compile Include="Forms\consultar\agregar\form_agregarRegistro.Designer.vb">
       <DependentUpon>form_agregarRegistro.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\agregar\form_agregarRegistro.vb">
+    <Compile Include="Forms\consultar\agregar\form_agregarRegistro.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\eliminar\form_eliminarRegistro.Designer.vb">
+    <Compile Include="Forms\consultar\eliminar\form_eliminarRegistro.Designer.vb">
       <DependentUpon>form_eliminarRegistro.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\eliminar\form_eliminarRegistro.vb">
+    <Compile Include="Forms\consultar\eliminar\form_eliminarRegistro.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\form_consultar.Designer.vb">
-      <DependentUpon>form_consultar.vb</DependentUpon>
+    <Compile Include="Forms\consultar\form_consulta.Designer.vb">
+      <DependentUpon>form_consulta.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\form_consultar.vb">
+    <Compile Include="Forms\consultar\form_consulta.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\form_login.Designer.vb">
+    <Compile Include="Forms\empleado\form_info_emp.Designer.vb">
+      <DependentUpon>form_info_emp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\empleado\form_info_emp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\login\form_login.Designer.vb">
       <DependentUpon>form_login.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\form_login.vb">
+    <Compile Include="Forms\login\form_login.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\form_planillaemp.Designer.vb">
+    <Compile Include="Forms\pago\form_pago.Designer.vb">
+      <DependentUpon>form_pago.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\pago\form_pago.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\planilla\form_planillaemp.Designer.vb">
       <DependentUpon>form_planillaemp.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\form_planillaemp.vb">
+    <Compile Include="Forms\planilla\form_planillaemp.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\form_resumenplan.Designer.vb">
+    <Compile Include="Forms\planilla\form_resumenplan.Designer.vb">
       <DependentUpon>form_resumenplan.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\form_resumenplan.vb">
+    <Compile Include="Forms\planilla\form_resumenplan.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -233,31 +247,38 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Calculos\calculos.vb" />
+    <Compile Include="Permisos\permisos.vb" />
     <Compile Include="Seguridad\SHA2.vb" />
     <Compile Include="Usuarios\ModeloUsuario.vb" />
     <Compile Include="Usuarios\UsuarioDAO.vb" />
     <Compile Include="Usuarios\UsuariosActivos.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Forms\actualizar\form_actualizarRegistro.resx">
+    <EmbeddedResource Include="Forms\consultar\actualizar\form_actualizarRegistro.resx">
       <DependentUpon>form_actualizarRegistro.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\agregar\form_agregarRegistro.resx">
+    <EmbeddedResource Include="Forms\consultar\agregar\form_agregarRegistro.resx">
       <DependentUpon>form_agregarRegistro.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\eliminar\form_eliminarRegistro.resx">
+    <EmbeddedResource Include="Forms\consultar\eliminar\form_eliminarRegistro.resx">
       <DependentUpon>form_eliminarRegistro.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\form_consultar.resx">
-      <DependentUpon>form_consultar.vb</DependentUpon>
+    <EmbeddedResource Include="Forms\consultar\form_consulta.resx">
+      <DependentUpon>form_consulta.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\form_login.resx">
+    <EmbeddedResource Include="Forms\empleado\form_info_emp.resx">
+      <DependentUpon>form_info_emp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\login\form_login.resx">
       <DependentUpon>form_login.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\form_planillaemp.resx">
+    <EmbeddedResource Include="Forms\pago\form_pago.resx">
+      <DependentUpon>form_pago.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\planilla\form_planillaemp.resx">
       <DependentUpon>form_planillaemp.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\form_resumenplan.resx">
+    <EmbeddedResource Include="Forms\planilla\form_resumenplan.resx">
       <DependentUpon>form_resumenplan.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">

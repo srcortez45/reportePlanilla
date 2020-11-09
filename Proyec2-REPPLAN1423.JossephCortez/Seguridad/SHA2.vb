@@ -1,6 +1,8 @@
 ﻿Imports System.Security.Cryptography
 
 Public Class SHA2
+
+    'MODULO PARA ENCRIPTAR LA CLAVE
     Public Shared Function GetSHA256(clave As String) As String
         Dim encrip As SHA256 = SHA256.Create()
         Dim encoding As Text.ASCIIEncoding = New Text.ASCIIEncoding
